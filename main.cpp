@@ -36,10 +36,22 @@ int main(int argc, char* argv[]) {
 	for(int i = 0; i < MAX_SIZE; ++i)
 		testVec.push_back(rand() % 10 + 1);
 	
+	printPretty(testVec);
 	
 	// sort here
 	
+	printPretty(testVec);
 	
 	return 0;
 }
+
+template<class TYPE>
+printPretty(std::vector<TYPE>& vec) {
+	using std::cout; using std::endl;
+	
+	cout << endl;
+	for(TYPE& t : vec) {
+		cout << t << " ";
+	}
+	cout << endl;
 }

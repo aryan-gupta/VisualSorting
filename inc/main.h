@@ -15,10 +15,12 @@
  * =============================================================================
  */
 
-#ifndef MAIN_H_INCLUDED
-#define MAIN_H_INCLUDED
-
+#ifndef MAIN_H_INC
+#define MAIN_H_INC
 
 int main(int argc, char* argv[]);
 
-#endif // MAIN_H_INCLUDED
+template<class TYPE>
+printPretty(std::vector<TYPE>& vec);
+
+#endif // MAIN_H_INC
