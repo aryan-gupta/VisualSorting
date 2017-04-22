@@ -29,6 +29,7 @@
 
 #include ".\InsertionSort.cpp"
 #include ".\QuickSort.cpp"
+#include ".\SelectionSort.cpp"
 
 const int MAX_SIZE = 25;
 
@@ -43,7 +44,7 @@ int main(int argc, char* argv[]) {
 	
 	printPretty(testVec);
 	
-	InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	SelectionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	printPretty(testVec);
 	

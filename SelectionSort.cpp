@@ -16,4 +16,9 @@
  */
 #include "info.h"
 
-#include ".\h\main.h"
+template <typename ITER, typename FUNC>
+void SelectionSort(ITER start, ITER end, FUNC cmp) {
+	for(ITER idx = start; idx < end; idx++) {
+		std::iter_swap(idx, std::min_element(idx, end, cmp));
+	}
+}
