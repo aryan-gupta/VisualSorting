@@ -16,9 +16,36 @@
  */
 #include "info.h"
 
-template <typename ITER, typename FUNC>
-void SelectionSort(ITER start, ITER end, FUNC cmp) {
-	for(; start < end; start++) {
-		std::iter_swap(start, std::min_element(start, end, cmp));
+namespace SortAlg {
+	template <typename ITER, typename FUNC>
+	void SelectionSort(ITER start, ITER end, FUNC cmp) {
+		for(; start < end; start++) {
+			std::iter_swap(start, std::min_element(start, end, cmp));
+		}
+	}
+}
+
+namespace SortAlgVis {
+	template <typename ITER, typename FUNC>
+	ITER min_element(ITER start, ITER end, FUNC cmp) {
+		ITER min = start;
+		for(; start < end; start++) {
+			::gWindow->render({start, min});
+			if(cmp(*start, *min)) {
+				::gWindow->render({start, min});
+				min = start;
+				::gWindow->render({start, min});
+			}
+		}
+		return min;
+	}
+	
+	template <typename ITER, typename FUNC>
+	void SelectionSort(ITER start, ITER end, FUNC cmp) {
+		for(; start < end; start++) {
+			::gWindow->render({start});
+			std::iter_swap(start, SortAlgVis::min_element(start, end, cmp));
+			::gWindow->render({start});
+		}
 	}
 }

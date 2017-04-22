@@ -50,10 +50,13 @@ int main(int argc, char* argv[]) {
 	//printPretty(testVec);
 	
 	std::random_shuffle(testVec.begin(), testVec.end());
-	SortAlgVis::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	//SortAlgVis::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	std::random_shuffle(testVec.begin(), testVec.end());
-	SortAlgVis::QuickSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	//SortAlgVis::QuickSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	
+	std::random_shuffle(testVec.begin(), testVec.end());
+	SortAlgVis::SelectionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	//printPretty(testVec);
 	
