@@ -27,6 +27,8 @@
 
 #include ".\inc\main.h"
 
+#include ".\InsertionSort.cpp"
+
 const int MAX_SIZE = 10;
 
 int main(int argc, char* argv[]) {
@@ -40,7 +42,7 @@ int main(int argc, char* argv[]) {
 	
 	printPretty(testVec);
 	
-	// sort here
+	InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	printPretty(testVec);
 	
