@@ -18,26 +18,25 @@
 
 template <typename ITER, typename FUNC>
 ITER part(ITER start, ITER end, FUNC cmp) {
-	ITER piv = end;
-	ITER i = start - 1;
+	ITER piv = end;       // Our piviot point
+	ITER prt = start - 1; // our parted pointer
 	
-	for(ITER j = start; j < end - 1; ++j) {
-		if(cmp(*j, *piv)) {
-			i++;
-			std::iter_swap(i, j);
+	for(ITER pntr = start; pntr < end; ++pntr) { // go through the array except the piv point
+		if(cmp(*pntr, *piv)) {         // if out pointer is less than our pivot
+			prt++;                     // increment partition (to make space for our value)
+			std::iter_swap(prt, pntr); // swap them two so the les than value is before our partition
 		}
 	}
 	
-	std::iter_swap(i + 1, end);
-	return i + 1;
+	std::iter_swap(prt + 1, end); // swap our pivot with the first one more than piv
+	return prt + 1;
 }
 
 template <typename ITER, typename FUNC>
 void QuickSort(ITER start, ITER end, FUNC cmp) {
-	end--;
-	if(start < end) {
-		ITER p = part(start, end, cmp);
-		QuickSort(start, p - 1, cmp);
-		QuickSort(p + 1, end, cmp);
+	if(start < end) { // make sure we have some values to sort
+		ITER p = part(start, end, cmp); // partition at the last value (pivot)
+		QuickSort(start, p - 1, cmp);   // sort all before our pivot point
+		QuickSort(p + 1, end, cmp);     // sort everything after our pivot
 	}
 }
