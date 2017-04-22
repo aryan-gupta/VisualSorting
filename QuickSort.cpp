@@ -18,18 +18,17 @@
 
 template <typename ITER, typename FUNC>
 ITER part(ITER start, ITER end, FUNC cmp) {
-	ITER piv = end;       // Our piviot point
-	ITER prt = start - 1; // our parted pointer
+	ITER prt = start; // our parted pointer so [start, prt) is less than the pivot
 	
-	for(ITER pntr = start; pntr < end; ++pntr) { // go through the array except the piv point
-		if(cmp(*pntr, *piv)) {         // if out pointer is less than our pivot
-			prt++;                     // increment partition (to make space for our value)
-			std::iter_swap(prt, pntr); // swap them two so the les than value is before our partition
+	for(ITER pntr = start; pntr < end; ++pntr) { // go through the array except the pivot point
+		if(cmp(*pntr, *end)) {         // if our pointer is less than our pivot
+			std::iter_swap(prt, pntr); // swap so its its before our partition
+			prt++;                     // increment partition
 		}
 	}
 	
-	std::iter_swap(prt + 1, end); // swap our pivot with the first one more than piv
-	return prt + 1;
+	std::iter_swap(prt, end); // swap our pivot with the first val more than pivot
+	return prt; // return out pivot
 }
 
 template <typename ITER, typename FUNC>
