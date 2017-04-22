@@ -21,11 +21,25 @@
 
 
 #include <iostream>
+#include <cstdlib>
 
 #include ".\inc\main.h"
+
+const int MAX_SIZE = 10;
 
 int main(int argc, char* argv[]) {
 	PRINT_LEGAL_TERR;
 	
+	srand(time(0));
+	
+	std::vector<int> testVec;
+	for(int i = 0; i < MAX_SIZE; ++i)
+		testVec.push_back(rand() % 10 + 1);
+	
+	
+	// sort here
+	
+	
 	return 0;
+}
 }
