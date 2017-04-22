@@ -74,5 +74,6 @@ namespace SortAlgVis {
 			QuickSort(start, piv, cmp);       // sort all before our pivot point
 			QuickSort(piv + 1, end + 1, cmp); // sort everything after our pivot
 		}
+		::gWindow->render();
 	}
 }
