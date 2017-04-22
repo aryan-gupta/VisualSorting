@@ -16,7 +16,12 @@
  */
 #include "info.h"
 
+#include <vector>
+#include <iostream>
+#include <SDL.h>
+
 #include ".\inc\main.h"
+#include ".\inc\Window.h"
 
 const int SCRN_W = 854;
 const int SCRN_H = 480;
@@ -51,19 +56,19 @@ Window::~Window() {
 	SDL_DestroyWindow(window);     // Destroy our main window
 }
 
-void render() {
+void Window::render() {
 	clear();
 	
 	SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
 	SDL_Rect box{
 		PAD, 
 		0,
-		(SCRN_W - 2*PAD) / vec.size(), 
+		(SCRN_W - 2*PAD) / testVec.size(), 
 		0
 	}; // renders a solid green background
 	
-	for(auto i = vec.begin(); i < vec.end(); ++i) {
-		int size = SCRN_H * (*i)/MAX_ELEM
+	for(auto i = testVec.begin(); i < testVec.end(); ++i) {
+		int size = SCRN_H * (*i)/MAX_ELEM;
 		box.y = SCRN_H - size;
 		box.h = size;
 		

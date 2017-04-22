@@ -21,6 +21,8 @@
 extern int MAX_SIZE;
 extern int MAX_ELEM;
 
+extern std::vector<int> testVec;
+
 int main(int argc, char* argv[]);
 
 template<class TYPE>

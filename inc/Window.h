@@ -37,7 +37,7 @@ private:
 	
 	void clear();
 	
-}
+};
 
 
 #endif // WINDOW_H_INC

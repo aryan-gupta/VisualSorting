@@ -26,6 +26,7 @@
 #include <vector>
 
 #include ".\inc\main.h"
+#include ".\inc\Window.h"
 
 #include ".\InsertionSort.cpp"
 #include ".\QuickSort.cpp"
@@ -34,12 +35,13 @@
 int MAX_SIZE = 35;
 int MAX_ELEM = 50;
 
+std::vector<int> testVec;
+
 int main(int argc, char* argv[]) {
 	PRINT_LEGAL_TERR;
 	
 	srand(time(0));
 	
-	std::vector<int> testVec;
 	for(int i = 0; i < MAX_SIZE; ++i)
 		testVec.push_back(rand() % MAX_ELEM);
 	
