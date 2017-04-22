@@ -34,11 +34,8 @@ L_SDLL = -LC:/Compiler/SDL/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer  -lSDL2_
 CFLAGS = $(DEBUG) -Wall -std=c++17 -c
 LFLAGS = $(DEBUG) -Wall
 OBJ = $(OBJDIR)/main.o $(OBJDIR)/res.o
-
+CPP = ./main.cpp ./InsertionSort.cpp ./QuickSort.cpp $(OBJDIR)/res.o
 # ============================ RECEPIES ========================================
-
-$(OBJDIR)/main.o: ./main.cpp ./InsertionSort.cpp ./QuickSort.cpp
-	$(CC) ./main.cpp -o ./$@ $(CFLAGS)
 
 $(OBJDIR)/%.o: ./%.cpp
 	$(CC) ./$^ -o ./$@ $(CFLAGS) 
@@ -47,8 +44,8 @@ $(OBJDIR)/res.o: ./res.rc ./info.h
 	$(RES) ./res.rc  ./$@
 	
 # Link	
-$(BINDIR)/main.exe: $(OBJ)
-	$(CC) ./$^ -o ./$@ $(LFLAGS)
+$(BINDIR)/main.exe: $(CPP)
+	$(CC) ./main.cpp -o ./$@ $(LFLAGS)
 
 # ============================= PHONY RECEPIES =================================
 .PHONY: all
