@@ -19,34 +19,33 @@
 #include <algorithm>
 
 namespace SortAlg {
-template <typename ITER, typename FUNC>
-void InsertionSort(ITER start, ITER end, FUNC cmp) {
-	for(ITER srt = start + 1; srt != end; srt++) { // go through the entire array
-		ITER pntr = srt; // pick the first element
-		while(pntr > start && cmp(*(pntr), *(pntr - 1))) { // Until the element is in the right place or we are at the beginning
-			std::iter_swap(pntr, pntr - 1); // keep moving the element back
-			pntr--; // after we swap we want to update the pointer
+	template <typename ITER, typename FUNC>
+	void InsertionSort(ITER start, ITER end, FUNC cmp) {
+		for(ITER srt = start + 1; srt != end; srt++) { // go through the entire array
+			ITER pntr = srt; // pick the first element
+			while(pntr > start && cmp(*(pntr), *(pntr - 1))) { // Until the element is in the right place or we are at the beginning
+				std::iter_swap(pntr, pntr - 1); // keep moving the element back
+				pntr--; // after we swap we want to update the pointer
+			}
 		}
 	}
-}
 }
 
 namespace SortAlgVis {
-template <typename ITER, typename FUNC>
-void InsertionSort(ITER start, ITER end, FUNC cmp) {
-	::gWindow->render(start, start);
-	for(ITER srt = start + 1; srt != end; srt++) { // go through the entire array
-		ITER pntr = srt; // pick the first element
-		::gWindow->render(pntr, srt);
-		while(pntr > start && cmp(*(pntr), *(pntr - 1))) { // Until the element is in the right place or we are at the beginning
-			::gWindow->render(pntr, srt);
-			std::iter_swap(pntr, pntr - 1); // keep moving the element back
-			::gWindow->render(pntr, srt);
-			pntr--; // after we swap we want to update the pointer
-			::gWindow->render(pntr, srt);
+	template <typename ITER, typename FUNC>
+	void InsertionSort(ITER start, ITER end, FUNC cmp) {
+		::gWindow->render({start, start});
+		for(ITER srt = start + 1; srt != end; srt++) { // go through the entire array
+			ITER pntr = srt; // pick the first element
+			::gWindow->render({pntr, srt});
+			while(pntr > start && cmp(*(pntr), *(pntr - 1))) { // Until the element is in the right place or we are at the beginning
+				::gWindow->render({pntr, srt});
+				std::iter_swap(pntr, pntr - 1); // keep moving the element back
+				::gWindow->render({pntr, srt});
+				pntr--; // after we swap we want to update the pointer
+				::gWindow->render({pntr, srt});
+			}
+			::gWindow->render({pntr, srt});
 		}
-		::gWindow->render(pntr, srt);
 	}
-}
-
 }
