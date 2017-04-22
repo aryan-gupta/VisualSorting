@@ -51,13 +51,13 @@ namespace SortAlgVis {
 		ITER prt = start; // our parted pointer so [start, prt) is less than the pivot
 		
 		for(ITER pntr = start; pntr < end; ++pntr) { // go through the array except the pivot point
-			::gWindow->render(pntr, prt);
+			::gWindow->render(pntr, end);
 			if(cmp(*pntr, *end)) {         // if our pointer is less than our pivot
-				::gWindow->render(pntr, prt);
+				::gWindow->render(pntr, end);
 				std::iter_swap(prt, pntr); // swap so its its before our partition
-				::gWindow->render(pntr, prt);
+				::gWindow->render(pntr, end);
 				prt++;                     // increment partition
-				::gWindow->render(pntr, prt);
+				::gWindow->render(pntr, end);
 			}
 		}
 		
