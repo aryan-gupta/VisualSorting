@@ -56,7 +56,7 @@ Window::~Window() {
 	SDL_DestroyWindow(window);     // Destroy our main window
 }
 
-void Window::render(std::vector<int>::iterator green, std::vector<int>::iterator red) {
+void Window::render(const std::vector<std::vector<int>::iterator>& colors) {
 	clear();
 	
 	SDL_Rect box{
@@ -64,18 +64,21 @@ void Window::render(std::vector<int>::iterator green, std::vector<int>::iterator
 		0,
 		(SCRN_W - 2*PAD) / testVec.size(), 
 		0
-	}; // renders a solid green background
+	};
 	
 	for(auto i = testVec.begin(); i < testVec.end(); ++i) {
 		int size = SCRN_H * (*i)/MAX_ELEM;
 		box.y = SCRN_H - size;
 		box.h = size;
 		
-		if(i == green) {
+		if       (colors.size() > 0 && i == colors[0]) {
 			SDL_SetRenderDrawColor(renderer, 0x00, 0xFF, 0xFF, 0xFF);
 			SDL_RenderFillRect(renderer, &box);
-		} else if(i == red) {
+		} else if(colors.size() > 1 && i == colors[1]) {
 			SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0xFF, 0xFF);
+			SDL_RenderFillRect(renderer, &box);
+		} else if(colors.size() > 2 && i == colors[2]) {
+			SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0x00, 0xFF);
 			SDL_RenderFillRect(renderer, &box);
 		} else {
 			SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
