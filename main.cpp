@@ -22,6 +22,8 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <time.h>
+#include <vector>
 
 #include ".\inc\main.h"
 
@@ -46,7 +48,7 @@ int main(int argc, char* argv[]) {
 }
 
 template<class TYPE>
-printPretty(std::vector<TYPE>& vec) {
+void printPretty(std::vector<TYPE>& vec) {
 	using std::cout; using std::endl;
 	
 	cout << endl;

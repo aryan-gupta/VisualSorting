@@ -21,6 +21,6 @@
 int main(int argc, char* argv[]);
 
 template<class TYPE>
-printPretty(std::vector<TYPE>& vec);
+void printPretty(std::vector<TYPE>& vec);
 
 #endif // MAIN_H_INC
