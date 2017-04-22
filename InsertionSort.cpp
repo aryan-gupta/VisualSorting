@@ -16,4 +16,16 @@
  */
 #include "info.h"
 
-#include ".\h\main.h"
+#include ".\inc\main.h"
+
+template <typename ITER, typename FUNC>
+void InsertionSort(ITER start, ITER end, FUNC cmp) {
+	start++;
+	while(start != end) {
+		ITER pntr = start + 1;
+		while(pntr >= start && cmp(pntr - 1, pntr)) {
+			swap(pntr - 1, pntr);
+			pntr--;
+		}
+	}
+}
