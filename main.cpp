@@ -21,11 +21,39 @@
 
 
 #include <iostream>
+#include <cstdlib>
+#include <time.h>
+#include <vector>
 
 #include ".\inc\main.h"
+
+const int MAX_SIZE = 10;
 
 int main(int argc, char* argv[]) {
 	PRINT_LEGAL_TERR;
 	
+	srand(time(0));
+	
+	std::vector<int> testVec;
+	for(int i = 0; i < MAX_SIZE; ++i)
+		testVec.push_back(rand() % 10 + 1);
+	
+	printPretty(testVec);
+	
+	// sort here
+	
+	printPretty(testVec);
+	
 	return 0;
+}
+
+template<class TYPE>
+void printPretty(std::vector<TYPE>& vec) {
+	using std::cout; using std::endl;
+	
+	cout << endl;
+	for(TYPE& t : vec) {
+		cout << t << " ";
+	}
+	cout << endl;
 }
