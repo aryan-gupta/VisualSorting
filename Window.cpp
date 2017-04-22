@@ -57,12 +57,21 @@ Window::~Window() {
 }
 
 void Window::render(const std::vector<std::vector<int>::iterator>& colors, int delay) {
+	SDL_Event event;
+	while(SDL_PollEvent(&event)) {
+		switch(event.type) {
+			case SDL_QUIT:
+				exit(0);
+			break;
+		}
+	}
+	
 	clear();
 	
 	SDL_Rect box{
-		PAD*2, 
+		PAD, 
 		0,
-		SCRN_W / testVec.size(), 
+		SCRN_W / (int)testVec.size(), 
 		0
 	};
 	

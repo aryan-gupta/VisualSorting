@@ -49,10 +49,10 @@ int main(int argc, char* argv[]) {
 		testVec.push_back(i);
 	//printPretty(testVec);
 	
-	std::random_shuffle(testVec.begin(), testVec.end());
+	//std::random_shuffle(testVec.begin(), testVec.end());
 	//SortAlgVis::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
-	std::random_shuffle(testVec.begin(), testVec.end());
+	//std::random_shuffle(testVec.begin(), testVec.end());
 	//SortAlgVis::QuickSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	std::random_shuffle(testVec.begin(), testVec.end());
@@ -60,7 +60,16 @@ int main(int argc, char* argv[]) {
 	
 	//printPretty(testVec);
 	
-	SDL_Delay(5000);
+	SDL_Event event;
+	while(true) {
+		while(SDL_PollEvent(&event)) {
+			switch(event.type) {
+				case SDL_QUIT:
+					exit(0);
+				break;
+			}
+		}
+	}
 	
 	return 0;
 }
