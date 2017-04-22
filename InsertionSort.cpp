@@ -34,18 +34,18 @@ void InsertionSort(ITER start, ITER end, FUNC cmp) {
 namespace SortAlgVis {
 template <typename ITER, typename FUNC>
 void InsertionSort(ITER start, ITER end, FUNC cmp) {
-	::gWindow->render();
+	::gWindow->render(start, start);
 	for(ITER srt = start + 1; srt != end; srt++) { // go through the entire array
-		::gWindow->render();
 		ITER pntr = srt; // pick the first element
+		::gWindow->render(pntr, srt);
 		while(pntr > start && cmp(*(pntr), *(pntr - 1))) { // Until the element is in the right place or we are at the beginning
-			::gWindow->render();
+			::gWindow->render(pntr, srt);
 			std::iter_swap(pntr, pntr - 1); // keep moving the element back
-			::gWindow->render();
+			::gWindow->render(pntr, srt);
 			pntr--; // after we swap we want to update the pointer
 			::gWindow->render();
 		}
-		::gWindow->render();
+		::gWindow->render(pntr, srt);
 	}
 }
 

@@ -29,6 +29,7 @@ public:
 	Window();
 	~Window();
 	
+	void render(std::vector<int>::iterator green, std::vector<int>::iterator red);
 	void render();
 
 private:
