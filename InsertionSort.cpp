@@ -18,7 +18,7 @@
 
 #include <algorithm>
 
-
+namespace SortAlg {
 template <typename ITER, typename FUNC>
 void InsertionSort(ITER start, ITER end, FUNC cmp) {
 	for(ITER srt = start + 1; srt != end; srt++) { // go through the entire array
@@ -28,4 +28,25 @@ void InsertionSort(ITER start, ITER end, FUNC cmp) {
 			pntr--; // after we swap we want to update the pointer
 		}
 	}
+}
+}
+
+namespace SortAlgVis {
+template <typename ITER, typename FUNC>
+void InsertionSort(ITER start, ITER end, FUNC cmp) {
+	::gWindow->render();
+	for(ITER srt = start + 1; srt != end; srt++) { // go through the entire array
+		::gWindow->render();
+		ITER pntr = srt; // pick the first element
+		while(pntr > start && cmp(*(pntr), *(pntr - 1))) { // Until the element is in the right place or we are at the beginning
+			::gWindow->render();
+			std::iter_swap(pntr, pntr - 1); // keep moving the element back
+			::gWindow->render();
+			pntr--; // after we swap we want to update the pointer
+			::gWindow->render();
+		}
+		::gWindow->render();
+	}
+}
+
 }

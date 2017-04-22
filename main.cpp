@@ -32,8 +32,8 @@
 #include ".\QuickSort.cpp"
 #include ".\SelectionSort.cpp"
 
-int MAX_SIZE = 35;
-int MAX_ELEM = 50;
+int MAX_SIZE = 200;
+int MAX_ELEM = 200;
 
 std::vector<int> testVec;
 
@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
 	
 	printPretty(testVec);
 	
-	InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	SortAlgVis::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	printPretty(testVec);
 	
