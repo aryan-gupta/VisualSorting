@@ -28,8 +28,9 @@
 #include ".\inc\main.h"
 
 #include ".\InsertionSort.cpp"
+#include ".\QuickSort.cpp"
 
-const int MAX_SIZE = 10;
+const int MAX_SIZE = 25;
 
 int main(int argc, char* argv[]) {
 	PRINT_LEGAL_TERR;
@@ -38,11 +39,11 @@ int main(int argc, char* argv[]) {
 	
 	std::vector<int> testVec;
 	for(int i = 0; i < MAX_SIZE; ++i)
-		testVec.push_back(rand() % 10 + 1);
+		testVec.push_back(rand() % 10);
 	
 	printPretty(testVec);
 	
-	InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	QuickSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	printPretty(testVec);
 	
