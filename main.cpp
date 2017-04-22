@@ -33,7 +33,6 @@
 #include ".\QuickSort.cpp"
 #include ".\SelectionSort.cpp"
 
-//int MAX_SIZE = 200;
 int MAX_ELEM = 200;
 
 std::vector<int> testVec;

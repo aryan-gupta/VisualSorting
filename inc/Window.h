@@ -29,7 +29,7 @@ public:
 	Window();
 	~Window();
 	
-	void render(std::vector<int>::iterator green, std::vector<int>::iterator red);
+	void render(const std::vector<std::vector<int>::iterator>& colors);
 	void render();
 
 private:
