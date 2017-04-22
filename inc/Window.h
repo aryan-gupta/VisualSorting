@@ -15,9 +15,29 @@
  * =============================================================================
  */
 
-#ifndef _
-#define _
+#ifndef WINDOW_H_INC
+#define WINDOW_H_INC
+
+#include <SDL.h>
+
+extern int SCRN_H;
+extern int SCRN_W;
 
 
+class Window {
+public:
+	Window();
+	~Window();
+	
+	void render();
 
-#endif
+private:
+	SDL_Window* window;
+	SDL_Renderer* renderer;
+	
+	void clear();
+	
+}
+
+
+#endif // WINDOW_H_INC
