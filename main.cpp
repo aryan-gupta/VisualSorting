@@ -37,19 +37,24 @@ int MAX_ELEM = 50;
 
 std::vector<int> testVec;
 
+Window* gWindow;
+
 int main(int argc, char* argv[]) {
 	PRINT_LEGAL_TERR;
-	
 	srand(time(0));
+	
+	gWindow = new Window();
 	
 	for(int i = 0; i < MAX_SIZE; ++i)
 		testVec.push_back(rand() % MAX_ELEM);
 	
 	printPretty(testVec);
 	
-	SelectionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	printPretty(testVec);
+	
+	SDL_Delay(5000);
 	
 	return 0;
 }
