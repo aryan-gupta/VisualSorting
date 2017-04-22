@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
 	
 	printPretty(testVec);
 	
-	QuickSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	printPretty(testVec);
 	
