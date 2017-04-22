@@ -33,9 +33,11 @@ ITER part(ITER start, ITER end, FUNC cmp) {
 
 template <typename ITER, typename FUNC>
 void QuickSort(ITER start, ITER end, FUNC cmp) {
+	end--; // decrement because ALG sorts [start, end]
+	
 	if(start < end) { // make sure we have some values to sort
 		ITER p = part(start, end, cmp); // partition at the last value (pivot)
-		QuickSort(start, p - 1, cmp);   // sort all before our pivot point
-		QuickSort(p + 1, end, cmp);     // sort everything after our pivot
+		QuickSort(start, p, cmp);       // sort all before our pivot point
+		QuickSort(p + 1, end + 1, cmp); // sort everything after our pivot
 	}
 }
