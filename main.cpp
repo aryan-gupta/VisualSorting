@@ -33,7 +33,7 @@
 #include ".\QuickSort.cpp"
 #include ".\SelectionSort.cpp"
 
-int MAX_ELEM = 200;
+int MAX_ELEM = 267;// 400, 267, 200, 160, 133, 114, 100, 89, 80;
 
 std::vector<int> testVec;
 

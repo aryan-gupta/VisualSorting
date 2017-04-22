@@ -23,11 +23,11 @@
 #include ".\inc\main.h"
 #include ".\inc\Window.h"
 
-const int SCRN_W = 854;
+const int SCRN_W = 820;
 const int SCRN_H = 480;
 const int PAD    = 10;
 
-const int DELAY = 25;
+const int DELAY = 2;
 
 Window::Window() {
 	if( NULL ==
