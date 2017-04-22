@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
 	
 	printPretty(testVec);
 	
-	// sort here
+	InsertionSort(testVec.begin(), testVec.end(), [](int a, int b)){ return a < b; }
 	
 	printPretty(testVec);
 	

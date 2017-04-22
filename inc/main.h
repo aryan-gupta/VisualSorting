@@ -23,4 +23,8 @@ int main(int argc, char* argv[]);
 template<class TYPE>
 void printPretty(std::vector<TYPE>& vec);
 
+
+template <typename ITER, typename FUNC>
+void InsertionSort(ITER start, ITER end, FUNC cmp);
+
 #endif // MAIN_H_INC
