@@ -18,10 +18,14 @@
 #ifndef MAIN_H_INC
 #define MAIN_H_INC
 
+class Window;
+
 extern int MAX_SIZE;
 extern int MAX_ELEM;
 
 extern std::vector<int> testVec;
+
+extern Window* gWindow;
 
 int main(int argc, char* argv[]);
 

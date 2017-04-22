@@ -27,7 +27,7 @@ const int SCRN_W = 854;
 const int SCRN_H = 480;
 const int PAD    = 10;
 
-const int DELAY = 100;
+const int DELAY = 250;
 
 Window::Window() {
 	if( NULL ==
