@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
 	
 	printPretty(testVec);
 	
-	SortAlgVis::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	SortAlgVis::QuickSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	printPretty(testVec);
 	
