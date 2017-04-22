@@ -32,8 +32,9 @@
 #include ".\InsertionSort.cpp"
 #include ".\QuickSort.cpp"
 #include ".\SelectionSort.cpp"
+#include ".\BubbleSort.cpp"
 
-int MAX_ELEM = 267;// 400, 267, 200, 160, 133, 114, 100, 89, 80;
+int MAX_ELEM = 80;// 400, 267, 200, 160, 133, 114, 100, 89, 80;
 
 std::vector<int> testVec;
 
@@ -43,11 +44,17 @@ int main(int argc, char* argv[]) {
 	PRINT_LEGAL_TERR;
 	srand(time(0));
 	
-	gWindow = new Window();
+	//gWindow = new Window();
 	
 	for(int i = 0; i < MAX_ELEM; ++i)
 		testVec.push_back(i);
-	//printPretty(testVec);
+	
+	std::random_shuffle(testVec.begin(), testVec.end());
+	printPretty(testVec);
+	
+	SortAlg::BubbleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	
+	printPretty(testVec);
 	
 	//std::random_shuffle(testVec.begin(), testVec.end());
 	//SortAlgVis::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
@@ -55,10 +62,8 @@ int main(int argc, char* argv[]) {
 	//std::random_shuffle(testVec.begin(), testVec.end());
 	//SortAlgVis::QuickSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
-	std::random_shuffle(testVec.begin(), testVec.end());
-	SortAlgVis::SelectionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-	
-	//printPretty(testVec);
+	//std::random_shuffle(testVec.begin(), testVec.end());
+	//SortAlgVis::SelectionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	SDL_Event event;
 	while(true) {
