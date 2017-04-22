@@ -34,7 +34,7 @@ L_SDLL = -LC:/Compiler/SDL/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer  -lSDL2_
 CFLAGS = $(DEBUG) -Wall -std=c++17 -c
 LFLAGS = $(DEBUG) -Wall
 OBJ = $(OBJDIR)/main.o $(OBJDIR)/res.o
-CPP = ./main.cpp ./InsertionSort.cpp ./QuickSort.cpp $(OBJDIR)/res.o
+CPP = $(OBJDIR)/res.o main.cpp InsertionSort.cpp QuickSort.cpp SelectionSort.cpp
 # ============================ RECEPIES ========================================
 
 $(OBJDIR)/%.o: ./%.cpp
