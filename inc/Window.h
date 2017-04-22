@@ -22,14 +22,15 @@
 
 extern const int SCRN_H;
 extern const int SCRN_W;
-
+extern const int PAD;
+extern const int DELAY;
 
 class Window {
 public:
 	Window();
 	~Window();
 	
-	void render(const std::vector<std::vector<int>::iterator>& colors);
+	void render(const std::vector<std::vector<int>::iterator>& colors, int delay = DELAY);
 	void render();
 
 private:

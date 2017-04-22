@@ -56,7 +56,7 @@ Window::~Window() {
 	SDL_DestroyWindow(window);     // Destroy our main window
 }
 
-void Window::render(const std::vector<std::vector<int>::iterator>& colors) {
+void Window::render(const std::vector<std::vector<int>::iterator>& colors, int delay) {
 	clear();
 	
 	SDL_Rect box{
@@ -90,7 +90,7 @@ void Window::render(const std::vector<std::vector<int>::iterator>& colors) {
 	
 	SDL_RenderPresent(renderer);
 	
-	SDL_Delay(DELAY);
+	SDL_Delay(delay);
 }
 
 void Window::render() {
