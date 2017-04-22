@@ -43,7 +43,7 @@ void InsertionSort(ITER start, ITER end, FUNC cmp) {
 			std::iter_swap(pntr, pntr - 1); // keep moving the element back
 			::gWindow->render(pntr, srt);
 			pntr--; // after we swap we want to update the pointer
-			::gWindow->render();
+			//::gWindow->render();
 		}
 		::gWindow->render(pntr, srt);
 	}
