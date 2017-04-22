@@ -16,16 +16,18 @@
  */
 #include "info.h"
 
-#include ".\inc\main.h"
+#include <algorithm>
+
 
 template <typename ITER, typename FUNC>
 void InsertionSort(ITER start, ITER end, FUNC cmp) {
 	start++;
 	while(start != end) {
-		ITER pntr = start + 1;
-		while(pntr >= start && cmp(pntr - 1, pntr)) {
-			swap(pntr - 1, pntr);
+		ITER pntr = start;
+		while(pntr > start && cmp(*(pntr), *(pntr - 1))) {
+			std::iter_swap(pntr, pntr - 1);
 			pntr--;
 		}
+		start++;
 	}
 }
