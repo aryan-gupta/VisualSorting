@@ -24,6 +24,7 @@
 #include <cstdlib>
 #include <time.h>
 #include <vector>
+#include <algorithm>
 
 #include ".\inc\main.h"
 #include ".\inc\Window.h"
@@ -32,7 +33,7 @@
 #include ".\QuickSort.cpp"
 #include ".\SelectionSort.cpp"
 
-int MAX_SIZE = 200;
+//int MAX_SIZE = 200;
 int MAX_ELEM = 200;
 
 std::vector<int> testVec;
@@ -45,8 +46,10 @@ int main(int argc, char* argv[]) {
 	
 	gWindow = new Window();
 	
-	for(int i = 0; i < MAX_SIZE; ++i)
-		testVec.push_back(rand() % MAX_ELEM);
+	for(int i = 0; i < MAX_ELEM; ++i)
+		testVec.push_back(i);
+	
+	std::random_shuffle(testVec.begin(), testVec.end());
 	
 	printPretty(testVec);
 	

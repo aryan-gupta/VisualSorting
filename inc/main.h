@@ -20,7 +20,6 @@
 
 class Window;
 
-extern int MAX_SIZE;
 extern int MAX_ELEM;
 
 extern std::vector<int> testVec;
