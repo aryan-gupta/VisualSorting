@@ -18,6 +18,9 @@
 #ifndef MAIN_H_INC
 #define MAIN_H_INC
 
+extern int MAX_SIZE;
+extern int MAX_ELEM;
+
 int main(int argc, char* argv[]);
 
 template<class TYPE>

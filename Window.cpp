@@ -18,6 +18,12 @@
 
 #include ".\inc\main.h"
 
+const int SCRN_W = 854;
+const int SCRN_H = 480;
+const int PAD    = 10;
+
+const int DELAY = 100;
+
 Window::Window() {
 	if( NULL ==
 		(window = SDL_CreateWindow(  // Create our Window
@@ -50,16 +56,23 @@ void render() {
 	
 	SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
 	SDL_Rect box{
-		0, 
-		0, 
-		SCRN_W, 
-		SCRN_H
+		PAD, 
+		0,
+		(SCRN_W - 2*PAD) / vec.size(), 
+		0
 	}; // renders a solid green background
 	
 	for(auto i = vec.begin(); i < vec.end(); ++i) {
+		int size = SCRN_H * (*i)/MAX_ELEM
+		box.y = SCRN_H - size;
+		box.h = size;
+		
 		SDL_RenderFillRect(renderer, &box);
+		
+		box.x += box.w;
 	}
-
+	
+	SDL_Delay(DELAY);
 }
 
 void Window::clear() {

@@ -20,8 +20,8 @@
 
 #include <SDL.h>
 
-extern int SCRN_H;
-extern int SCRN_W;
+extern const int SCRN_H;
+extern const int SCRN_W;
 
 
 class Window {
