@@ -60,9 +60,9 @@ void Window::render(const std::vector<std::vector<int>::iterator>& colors, int d
 	clear();
 	
 	SDL_Rect box{
-		PAD, 
+		PAD*2, 
 		0,
-		(SCRN_W - 2*PAD) / testVec.size(), 
+		SCRN_W / testVec.size(), 
 		0
 	};
 	
