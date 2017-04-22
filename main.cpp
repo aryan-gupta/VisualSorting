@@ -31,7 +31,7 @@
 #include ".\QuickSort.cpp"
 #include ".\SelectionSort.cpp"
 
-const int MAX_SIZE = 25;
+const int MAX_SIZE = 35;
 
 int main(int argc, char* argv[]) {
 	PRINT_LEGAL_TERR;
@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
 	
 	std::vector<int> testVec;
 	for(int i = 0; i < MAX_SIZE; ++i)
-		testVec.push_back(rand() % 10);
+		testVec.push_back(rand() % 100);
 	
 	printPretty(testVec);
 	
