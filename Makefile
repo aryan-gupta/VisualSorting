@@ -37,8 +37,8 @@ OBJ = $(OBJDIR)/main.o $(OBJDIR)/res.o
 
 # ============================ RECEPIES ========================================
 
-$(OBJDIR)/main.o: ./main.cpp
-	$(CC) ./$^ -o ./$@ $(CFLAGS)
+$(OBJDIR)/main.o: ./main.cpp ./InsertionSort.cpp ./QuickSort.cpp
+	$(CC) ./main.cpp -o ./$@ $(CFLAGS)
 
 $(OBJDIR)/%.o: ./%.cpp
 	$(CC) ./$^ -o ./$@ $(CFLAGS) 
