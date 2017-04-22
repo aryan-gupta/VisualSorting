@@ -21,13 +21,14 @@
 
 template <typename ITER, typename FUNC>
 void InsertionSort(ITER start, ITER end, FUNC cmp) {
-	start++;
-	while(start != end) {
-		ITER pntr = start;
-		while(pntr > start && cmp(*(pntr), *(pntr - 1))) {
-			std::iter_swap(pntr, pntr - 1);
-			pntr--;
+	ITER pntr = start + 1;
+	
+	while(pntr != end) {
+		ITER mvr = pntr;
+		while(mvr > start && cmp(*(mvr), *(mvr - 1))) {
+			std::iter_swap(mvr, mvr - 1);
+			mvr--;
 		}
-		start++;
+		pntr++;
 	}
 }
