@@ -33,9 +33,15 @@ L_SDLL = -LC:/Compiler/SDL/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer  -lSDL2_
 # ==============================  MACROS  ======================================
 CFLAGS = $(DEBUG) -Wall -std=c++17 -c
 LFLAGS = $(DEBUG) -Wall
-OBJ = $(OBJDIR)/main.o $(OBJDIR)/res.o
-CPP = $(OBJDIR)/res.o main.cpp InsertionSort.cpp QuickSort.cpp SelectionSort.cpp
+OBJ = $(OBJDIR)/res.o $(OBJDIR)/Window.o $(OBJDIR)/main.o
+CPP = InsertionSort.cpp QuickSort.cpp SelectionSort.cpp
 # ============================ RECEPIES ========================================
+
+$(OBJDIR)/Window.o: ./Window.cpp ./inc/Window.h
+	$(CC) ./Window.cpp -o ./$@ $(CFLAGS) $(L_SDLC)
+
+$(OBJDIR)/main.o: ./main.cpp ./inc/main.h $(CPP)
+	$(CC) ./main.cpp -o ./$@ $(CFLAGS) $(L_SDLC)
 
 $(OBJDIR)/%.o: ./%.cpp
 	$(CC) ./$^ -o ./$@ $(CFLAGS) 
@@ -44,8 +50,8 @@ $(OBJDIR)/res.o: ./res.rc ./info.h
 	$(RES) ./res.rc  ./$@
 	
 # Link	
-$(BINDIR)/main.exe: $(CPP)
-	$(CC) ./main.cpp -o ./$@ $(LFLAGS)
+$(BINDIR)/main.exe: $(OBJ)
+	$(CC) ./$^ -o ./$@ $(LFLAGS) $(L_SDLL)
 
 # ============================= PHONY RECEPIES =================================
 .PHONY: all

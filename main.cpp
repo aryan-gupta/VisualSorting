@@ -26,27 +26,35 @@
 #include <vector>
 
 #include ".\inc\main.h"
+#include ".\inc\Window.h"
 
 #include ".\InsertionSort.cpp"
 #include ".\QuickSort.cpp"
 #include ".\SelectionSort.cpp"
 
-const int MAX_SIZE = 35;
+int MAX_SIZE = 200;
+int MAX_ELEM = 200;
+
+std::vector<int> testVec;
+
+Window* gWindow;
 
 int main(int argc, char* argv[]) {
 	PRINT_LEGAL_TERR;
-	
 	srand(time(0));
 	
-	std::vector<int> testVec;
+	gWindow = new Window();
+	
 	for(int i = 0; i < MAX_SIZE; ++i)
-		testVec.push_back(rand() % 100);
+		testVec.push_back(rand() % MAX_ELEM);
 	
 	printPretty(testVec);
 	
-	SelectionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	SortAlgVis::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	printPretty(testVec);
+	
+	SDL_Delay(5000);
 	
 	return 0;
 }

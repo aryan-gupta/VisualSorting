@@ -15,21 +15,30 @@
  * =============================================================================
  */
 
-#ifndef MAIN_H_INC
-#define MAIN_H_INC
+#ifndef WINDOW_H_INC
+#define WINDOW_H_INC
 
-class Window;
+#include <SDL.h>
 
-extern int MAX_SIZE;
-extern int MAX_ELEM;
+extern const int SCRN_H;
+extern const int SCRN_W;
 
-extern std::vector<int> testVec;
 
-extern Window* gWindow;
+class Window {
+public:
+	Window();
+	~Window();
+	
+	void render(std::vector<int>::iterator green, std::vector<int>::iterator red);
+	void render();
 
-int main(int argc, char* argv[]);
+private:
+	SDL_Window* window;
+	SDL_Renderer* renderer;
+	
+	void clear();
+	
+};
 
-template<class TYPE>
-void printPretty(std::vector<TYPE>& vec);
 
-#endif // MAIN_H_INC
+#endif // WINDOW_H_INC
