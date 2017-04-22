@@ -93,32 +93,6 @@ void Window::render(const std::vector<std::vector<int>::iterator>& colors, int d
 	SDL_Delay(delay);
 }
 
-void Window::render() {
-	clear();
-	
-	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-	SDL_Rect box{
-		PAD, 
-		0,
-		(SCRN_W - 2*PAD) / testVec.size(), 
-		0
-	}; // renders a solid green background
-	
-	for(auto i = testVec.begin(); i < testVec.end(); ++i) {
-		int size = SCRN_H * (*i)/MAX_ELEM;
-		box.y = SCRN_H - size;
-		box.h = size;
-		
-		SDL_RenderFillRect(renderer, &box);
-		
-		box.x += box.w;
-	}
-	
-	SDL_RenderPresent(renderer);
-	
-	SDL_Delay(DELAY);
-}
-
 void Window::clear() {
 	SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF); // Black
 	SDL_RenderClear(renderer);

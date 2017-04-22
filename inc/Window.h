@@ -30,8 +30,7 @@ public:
 	Window();
 	~Window();
 	
-	void render(const std::vector<std::vector<int>::iterator>& colors, int delay = DELAY);
-	void render();
+	void render(const std::vector<std::vector<int>::iterator>& colors = {}, int delay = DELAY);
 
 private:
 	SDL_Window* window;
