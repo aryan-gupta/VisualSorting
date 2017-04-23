@@ -49,12 +49,12 @@ int main(int argc, char* argv[]) {
 	for(int i = 0; i < MAX_ELEM; ++i)
 		testVec.push_back(i);
 	
-	// std::random_shuffle(testVec.begin(), testVec.end());
-	// printPretty(testVec);
+	std::random_shuffle(testVec.begin(), testVec.end());
+	printPretty(testVec);
 	
-	// SortAlg::BubbleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	SortAlg::BubbleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
-	// printPretty(testVec);
+	printPretty(testVec);
 	
 	//std::random_shuffle(testVec.begin(), testVec.end());
 	//SortAlgVis::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
