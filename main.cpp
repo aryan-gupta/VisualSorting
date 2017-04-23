@@ -33,6 +33,7 @@
 #include ".\QuickSort.cpp"
 #include ".\SelectionSort.cpp"
 #include ".\BubbleSort.cpp"
+#include ".\GnomeSort.cpp"
 
 int MAX_ELEM = 100;// 400, 267, 200, 160, 133, 114, 100, 89, 80;
 
@@ -52,7 +53,7 @@ int main(int argc, char* argv[]) {
 	// std::random_shuffle(testVec.begin(), testVec.end());
 	// printPretty(testVec);
 	
-	// SortAlg::BubbleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	// SortAlg::GnomeSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	// printPretty(testVec);
 	
@@ -67,6 +68,9 @@ int main(int argc, char* argv[]) {
 	
 	//std::random_shuffle(testVec.begin(), testVec.end());
 	//SortAlgVis::BubbleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	
+	std::random_shuffle(testVec.begin(), testVec.end());
+	SortAlgVis::GnomeSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	
 	
