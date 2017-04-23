@@ -78,7 +78,10 @@ int main(int argc, char* argv[]) {
 	//SortAlgVis::StoogleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	std::random_shuffle(testVec.begin(), testVec.end());
-	SortAlgVis::RadixSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	SortAlgVis::RadixSort_LSD(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	
+	std::random_shuffle(testVec.begin(), testVec.end());
+	//SortAlgVis::RadixSort_MSD(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	
 	

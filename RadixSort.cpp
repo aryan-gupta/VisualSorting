@@ -43,12 +43,22 @@ namespace SortAlgVis {
 	}
 	
 	template <typename ITER, typename FUNC>
-	void RadixSort(ITER start, ITER end, FUNC cmp) {
-		//ITER max = SortAlgVis::max_element(start, end, cmp);
+	void RadixSort_LSD(ITER start, ITER end, FUNC cmp) {
+		ITER max = SortAlgVis::max_element(start, end, cmp);
 		
-		for(int exp = 1; exp <= 1000; exp *= 10) {
+		for(int exp = 10; exp <= (*max) * 100; exp *= 10) {
 			::gWindow->render({start});
-			SortAlgVis::InsertionSort(start, end, [&](int a, int b) { return a%exp < b%exp; });
+			SortAlgVis::InsertionSort(start, end, [&](int a, int b) { return a % exp < b % exp; });
+		}
+	}
+	
+	template <typename ITER, typename FUNC>
+	void RadixSort_MSD(ITER start, ITER end, FUNC cmp) {
+		ITER max = SortAlgVis::max_element(start, end, cmp);
+		
+		for(int exp = *max; exp > 0; exp /= 10) {
+			::gWindow->render({start});
+			SortAlgVis::InsertionSort(start, end, [&](int a, int b) { return a / exp < b / exp; });
 		}
 	}
 }
