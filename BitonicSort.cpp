@@ -18,21 +18,15 @@
 
 #include ".\inc\main.h"
 
-namespace SortAlg {
+namespace SortAlg {	
 	template <typename ITER>
-	void BitonicSort(ITER start, ITER end) {
-		BitonicSortHelper(true, start, end);
-	}
-	
-	template <typename ITER>
-	void BitonicSortHelper(bool up, ITER start, ITER end) {
-		if(end - start <= 1)
-			return;
-		
+	void BitonicSortCompare(bool up, ITER start, ITER end) {
 		int half = (end - start) / 2;
-		BitonicSortHelper(true, start, end - half);
-		BitonicSortHelper(false, start + half, end);
-		BitonicSortMerge(up, start, end);
+		
+		for(; start < end - half; start++) {
+			if((*start > *(start + half)) == up)
+				std::iter_swap(start, start + half);
+		}
 	}
 	
 	template <typename ITER>
@@ -47,13 +41,20 @@ namespace SortAlg {
 		BitonicSortMerge(up, start + half, end);
 	}
 	
+	
 	template <typename ITER>
-	void BitonicSortCompare(bool up, ITER start, ITER end) {
-		int half = (end - start) / 2;
+	void BitonicSortHelper(bool up, ITER start, ITER end) {
+		if(end - start <= 1)
+			return;
 		
-		for(; start < end - half; start++) {
-			if((*start > *(start + half)) == up)
-				std::iter_swap(start, start + half);
-		}
+		int half = (end - start) / 2;
+		BitonicSortHelper(true, start, end - half);
+		BitonicSortHelper(false, start + half, end);
+		BitonicSortMerge(up, start, end);
+	}
+	
+	template <typename ITER>
+	void BitonicSort(ITER start, ITER end) {
+		BitonicSortHelper(true, start, end);
 	}
 }
