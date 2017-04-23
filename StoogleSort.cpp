@@ -34,3 +34,25 @@ namespace SortAlg {
 		}
 	}
 }
+
+namespace SortAlgVis {
+	template <typename ITER, typename FUNC>
+	void StoogleSort(ITER start, ITER end, FUNC cmp) {
+		end--;
+		::gWindow->render({start, end}, 0);
+		if(!cmp(*start, *end)) {
+			std::iter_swap(start, end);
+			::gWindow->render({start, end}, 0);
+		}
+		
+		if(end - start + 1 > 2) {
+			int prt = (end - start + 1)/3;
+			
+			StoogleSort(start, end - prt + 1, cmp);
+			StoogleSort(start + prt, end + 1, cmp);
+			StoogleSort(start, end - prt + 1, cmp);
+		}
+		
+		::gWindow->render({start, end}, 0);
+	}
+}
