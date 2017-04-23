@@ -40,7 +40,7 @@ namespace SortAlg {
 	}
 }
 
-namespace SortAlg {
+namespace SortAlgVis {
 	template <typename ITER, typename FUNC>
 	ITER max_element(ITER start, ITER end, FUNC cmp) {
 		ITER max = start;

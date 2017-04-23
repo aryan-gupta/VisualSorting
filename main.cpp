@@ -35,6 +35,7 @@
 #include ".\BubbleSort.cpp"
 #include ".\GnomeSort.cpp"
 #include ".\StoogleSort.cpp"
+#include ".\RadixSort.cpp"
 
 int MAX_ELEM = 100;// 400, 267, 200, 160, 133, 114, 100, 89, 80;
 
@@ -46,17 +47,17 @@ int main(int argc, char* argv[]) {
 	PRINT_LEGAL_TERR;
 	srand(time(0));
 	
-	gWindow = new Window();
+	//gWindow = new Window();
 	
 	for(int i = 0; i < MAX_ELEM; ++i)
 		testVec.push_back(i);
 	
-	// std::random_shuffle(testVec.begin(), testVec.end());
-	// printPretty(testVec);
+	std::random_shuffle(testVec.begin(), testVec.end());
+	printPretty(testVec);
 	
-	// SortAlg::StoogleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	SortAlg::RadixSort(testVec.begin(), testVec.end());
 	
-	// printPretty(testVec);
+	printPretty(testVec);
 	
 	//std::random_shuffle(testVec.begin(), testVec.end());
 	//SortAlgVis::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
@@ -73,8 +74,8 @@ int main(int argc, char* argv[]) {
 	//std::random_shuffle(testVec.begin(), testVec.end());
 	//SortAlgVis::GnomeSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
-	std::random_shuffle(testVec.begin(), testVec.end());
-	SortAlgVis::StoogleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	//std::random_shuffle(testVec.begin(), testVec.end());
+	//SortAlgVis::StoogleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	
 	
