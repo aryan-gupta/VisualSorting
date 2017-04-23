@@ -24,7 +24,7 @@ namespace SortAlg {
 	void GnomeSort(ITER start, ITER end, FUNC cmp) {
 		ITER idx = start;
 		while(idx < end) {
-			if(idx == start || cmp(*(idx), *(idx - 1))) {
+			if(idx == start || !cmp(*(idx), *(idx - 1))) {
 				idx++;
 			} else {
 				std::iter_swap(idx, idx - 1);
