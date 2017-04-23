@@ -43,7 +43,7 @@ namespace SortAlgVis {
 			for(ITER idx = start; idx < end - 1; ++idx) { // go through the array except last
 				::gWindow->render({idx, idx + 1});
 				if(!cmp(*(idx), *(idx + 1))) {    // if the value and the next value is out of order
-					::gWindow->render({idx, idx + 1});
+					//::gWindow->render({idx, idx + 1});
 					std::iter_swap(idx, idx + 1); // swap them 
 					::gWindow->render({idx, idx + 1});
 					sorted = false; // and set sorted to false;
