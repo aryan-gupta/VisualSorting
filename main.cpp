@@ -44,7 +44,7 @@ int main(int argc, char* argv[]) {
 	PRINT_LEGAL_TERR;
 	srand(time(0));
 	
-	//gWindow = new Window();
+	gWindow = new Window();
 	
 	for(int i = 0; i < MAX_ELEM; ++i)
 		testVec.push_back(i);
