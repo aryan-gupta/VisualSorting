@@ -29,7 +29,7 @@ namespace SortAlg {
 		if(end - start <= 1)
 			return;
 		
-		int half = (end - start) / 2
+		int half = (end - start) / 2;
 		BitonicSortHelper(true, start, end - half);
 		BitonicSortHelper(false, start + half, end);
 		BitonicSortMerge(up, start, end);
@@ -42,14 +42,14 @@ namespace SortAlg {
 		
 		BitonicSortCompare(up, start, end);
 		
-		int half = (end - start) / 2
+		int half = (end - start) / 2;
 		BitonicSortMerge(up, start, end - half);
 		BitonicSortMerge(up, start + half, end);
 	}
 	
 	template <typename ITER>
 	void BitonicSortCompare(bool up, ITER start, ITER end) {
-		int half = (end - start) / 2
+		int half = (end - start) / 2;
 		
 		for(; start < end - half; start++) {
 			if((*start > *(start + half)) == up)
