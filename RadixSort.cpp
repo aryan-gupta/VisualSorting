@@ -21,7 +21,7 @@ namespace SortAlg {
 	void RadixSort(ITER start, ITER end, FUNC cmp) {
 		ITER max = std::max_element(start, end, cmp);
 		
-		for(int exp = 1; (*max) / exp > 0; exp *= 10) {
+		for(int exp = 1; (*max) / exp > 0.1; exp *= 10) {
 			std::stable_sort(start, end, [&](int a, int b) { return a/exp < b/exp; });
 		}
 	}
@@ -40,5 +40,15 @@ namespace SortAlgVis {
 			}
 		}
 		return max;
+	}
+	
+	template <typename ITER, typename FUNC>
+	void RadixSort(ITER start, ITER end, FUNC cmp) {
+		//ITER max = SortAlgVis::max_element(start, end, cmp);
+		
+		for(int exp = 1; exp <= 1000; exp *= 10) {
+			::gWindow->render({start});
+			SortAlgVis::InsertionSort(start, end, [&](int a, int b) { return a%exp < b%exp; });
+		}
 	}
 }
