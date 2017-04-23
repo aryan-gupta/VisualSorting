@@ -109,6 +109,17 @@ void Window::clear() {
 
 
 int Window::askSort() {
+	using std::endl; using std::cout;
+	cout << "Please Pick a Sort: " << endl
+		 << "0. Insertion Sort" << endl
+		 << "1. QuickSort Sort" << endl
+		 << "2. Selection Sort" << endl
+		 << "3. Bubble Sort" << endl
+		 << "4. Gnome Sort" << endl
+		 << "5. Stoogle Sort" << endl
+		 << "6. Radix LSD Sort" << endl
+		 << "7. Radix MSD Sort" << endl;
+		 
 	int c;
 	std::cin >> c;
 	return c;
