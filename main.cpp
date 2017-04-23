@@ -37,7 +37,7 @@
 #include ".\StoogleSort.cpp"
 #include ".\RadixSort.cpp"
 
-int MAX_ELEM = 200;// 400, 267, 200, 160, 133, 114, 100, 89, 80;
+int MAX_ELEM = 100;// 400, 267, 200, 160, 133, 114, 100, 89, 80;
 
 std::vector<int> testVec;
 
@@ -52,6 +52,8 @@ int main(int argc, char* argv[]) {
 	for(int i = 0; i < MAX_ELEM; ++i)
 		testVec.push_back(i);
 	
+	int choice = gWindow->askSort();
+	
 	// std::random_shuffle(testVec.begin(), testVec.end());
 	// printPretty(testVec);
 	
@@ -59,30 +61,52 @@ int main(int argc, char* argv[]) {
 	
 	// printPretty(testVec);
 	
-	//std::random_shuffle(testVec.begin(), testVec.end());
-	//SortAlgVis::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
-	//std::random_shuffle(testVec.begin(), testVec.end());
-	//SortAlgVis::QuickSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-	
-	//std::random_shuffle(testVec.begin(), testVec.end());
-	//SortAlgVis::SelectionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-	
-	//std::random_shuffle(testVec.begin(), testVec.end());
-	//SortAlgVis::BubbleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-	
-	//std::random_shuffle(testVec.begin(), testVec.end());
-	//SortAlgVis::GnomeSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-	
-	//std::random_shuffle(testVec.begin(), testVec.end());
-	//SortAlgVis::StoogleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-	
-	std::random_shuffle(testVec.begin(), testVec.end());
-	SortAlgVis::RadixSort_LSD(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-	
-	std::random_shuffle(testVec.begin(), testVec.end());
-	//SortAlgVis::RadixSort_MSD(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-	
+	switch(choice) {
+		case 0:
+			std::random_shuffle(testVec.begin(), testVec.end());
+			SortAlgVis::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+		break;
+		
+		case 1:
+			std::random_shuffle(testVec.begin(), testVec.end());
+			SortAlgVis::QuickSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+		break;
+		
+		case 2:
+			std::random_shuffle(testVec.begin(), testVec.end());
+			SortAlgVis::SelectionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+		break;
+		
+		case 3:
+			std::random_shuffle(testVec.begin(), testVec.end());
+			SortAlgVis::BubbleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+		break;
+		
+		case 4:
+			std::random_shuffle(testVec.begin(), testVec.end());
+			SortAlgVis::GnomeSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+		break;
+		
+		case 5:
+			std::random_shuffle(testVec.begin(), testVec.end());
+			SortAlgVis::StoogleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+		break;
+		
+		case 6:
+			std::random_shuffle(testVec.begin(), testVec.end());
+			SortAlgVis::RadixSort_LSD(testVec.begin(), testVec.end());
+		break;
+		
+		case 7:
+			std::random_shuffle(testVec.begin(), testVec.end());
+			SortAlgVis::RadixSort_MSD(testVec.begin(), testVec.end());
+		break;
+		
+		default:
+			std::cout << "Sorry, That is a Wrong Choice" << std::endl;
+		break;
+	}
 	
 	
 	SDL_Event event;

@@ -106,3 +106,10 @@ void Window::clear() {
 	SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF); // Black
 	SDL_RenderClear(renderer);
 }
+
+
+int Window::askSort() {
+	int c;
+	std::cin >> c;
+	return c;
+}
