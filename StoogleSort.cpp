@@ -16,4 +16,19 @@
  */
 #include "info.h"
 
-#include ".\inc\main.h"
+namespace SortAlg {
+	template <typename ITER, typename FUNC>
+	void StoogleSort(ITER start, ITER end, FUNC cmp) {
+		if(cmp(start, end - 1)) {
+			std::iter_swap(start, end);
+		}
+		
+		if(end - start > 2) {
+			int prt = (end - start)/3;
+			
+			StoogleSort(start, end - prt - 1);
+			StoogleSort(start + prt, end - 1);
+			StoogleSort(start, end - prt - 1);
+		}
+	}
+}
