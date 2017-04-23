@@ -45,17 +45,17 @@ int main(int argc, char* argv[]) {
 	PRINT_LEGAL_TERR;
 	srand(time(0));
 	
-	gWindow = new Window();
+	//gWindow = new Window();
 	
 	for(int i = 0; i < MAX_ELEM; ++i)
 		testVec.push_back(i);
 	
-	// std::random_shuffle(testVec.begin(), testVec.end());
-	// printPretty(testVec);
+	std::random_shuffle(testVec.begin(), testVec.end());
+	printPretty(testVec);
 	
-	// SortAlg::GnomeSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	SortAlg::StoogleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
-	// printPretty(testVec);
+	printPretty(testVec);
 	
 	//std::random_shuffle(testVec.begin(), testVec.end());
 	//SortAlgVis::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
@@ -69,8 +69,8 @@ int main(int argc, char* argv[]) {
 	//std::random_shuffle(testVec.begin(), testVec.end());
 	//SortAlgVis::BubbleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
-	std::random_shuffle(testVec.begin(), testVec.end());
-	SortAlgVis::GnomeSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	//std::random_shuffle(testVec.begin(), testVec.end());
+	//SortAlgVis::GnomeSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	
 	
