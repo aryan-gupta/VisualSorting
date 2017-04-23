@@ -19,16 +19,18 @@
 namespace SortAlg {
 	template <typename ITER, typename FUNC>
 	void StoogleSort(ITER start, ITER end, FUNC cmp) {
-		if(cmp(start, end - 1)) {
+		end--;
+		
+		if(!cmp(*start, *end)) {
 			std::iter_swap(start, end);
 		}
 		
-		if(end - start > 2) {
-			int prt = (end - start)/3;
+		if(end - start + 1 > 2) {
+			int prt = (end - start + 1)/3;
 			
-			StoogleSort(start, end - prt - 1);
-			StoogleSort(start + prt, end - 1);
-			StoogleSort(start, end - prt - 1);
+			StoogleSort(start, end - prt + 1, cmp);
+			StoogleSort(start + prt, end + 1, cmp);
+			StoogleSort(start, end - prt + 1, cmp);
 		}
 	}
 }

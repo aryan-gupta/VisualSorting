@@ -34,6 +34,7 @@
 #include ".\SelectionSort.cpp"
 #include ".\BubbleSort.cpp"
 #include ".\GnomeSort.cpp"
+#include ".\StoogleSort.cpp"
 
 int MAX_ELEM = 100;// 400, 267, 200, 160, 133, 114, 100, 89, 80;
 
