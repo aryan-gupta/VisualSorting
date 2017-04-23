@@ -118,7 +118,9 @@ int Window::askSort() {
 		 << "4. Gnome Sort" << endl
 		 << "5. Stoogle Sort" << endl
 		 << "6. Radix LSD Sort" << endl
-		 << "7. Radix MSD Sort" << endl;
+		 << "7. Radix MSD Sort" << endl
+		 << "8. Bitonic Sort" << endl
+		 << endl;
 		 
 	int c;
 	std::cin >> c;
