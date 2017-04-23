@@ -55,7 +55,7 @@ int main(int argc, char* argv[]) {
 	std::random_shuffle(testVec.begin(), testVec.end());
 	printPretty(testVec);
 	
-	SortAlg::RadixSort(testVec.begin(), testVec.end());
+	SortAlg::RadixSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	printPretty(testVec);
 	
