@@ -23,8 +23,8 @@
 #include ".\inc\main.h"
 #include ".\inc\Window.h"
 
-const int SCRN_W = 820;
-const int SCRN_H = 480;
+const int SCRN_W = 1044;
+const int SCRN_H = 620;
 const int PAD    = 10;
 
 const int DELAY = 0;
@@ -118,7 +118,9 @@ int Window::askSort() {
 		 << "4. Gnome Sort" << endl
 		 << "5. Stoogle Sort" << endl
 		 << "6. Radix LSD Sort" << endl
-		 << "7. Radix MSD Sort" << endl;
+		 << "7. Radix MSD Sort" << endl
+		 << "8. Bitonic Sort" << endl
+		 << endl;
 		 
 	int c;
 	std::cin >> c;
