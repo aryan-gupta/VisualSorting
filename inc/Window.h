@@ -32,7 +32,7 @@ public:
 	
 	void render(const std::vector<std::vector<int>::iterator>& colors = {}, int delay = DELAY);
 	
-	int askSort();
+	static int askSort();
 	
 private:
 	SDL_Window* window;

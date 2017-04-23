@@ -47,12 +47,12 @@ int main(int argc, char* argv[]) {
 	PRINT_LEGAL_TERR;
 	srand(time(0));
 	
+	int choice = Window::askSort();
+	
 	gWindow = new Window();
 	
 	for(int i = 0; i < MAX_ELEM; ++i)
 		testVec.push_back(i);
-	
-	int choice = gWindow->askSort();
 	
 	// std::random_shuffle(testVec.begin(), testVec.end());
 	// printPretty(testVec);
