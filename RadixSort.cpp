@@ -17,17 +17,12 @@
 #include "info.h"
 
 namespace SortAlg {
-	template <typename ITER>
-	void RadixSortHelper(ITER start, ITER end, int digit) {
-		std::stable_sort(start, end, [&](int a, int b) { return a/digit < b/digit; });
-	}
-	
 	template <typename ITER, typename FUNC>
 	void RadixSort(ITER start, ITER end, FUNC cmp) {
 		ITER max = std::max_element(start, end, cmp);
 		
-		for(int exp = 1; (*max) / exp > 0.1; exp *= 10) {
-			RadixSortHelper(start, end, exp);
+		for(int exp = 1; (*max) / exp > 0; exp *= 10) {
+			std::stable_sort(start, end, [&](int a, int b) { return a/exp < b/exp; });
 		}
 	}
 }
