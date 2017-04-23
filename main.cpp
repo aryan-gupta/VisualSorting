@@ -35,8 +35,9 @@
 #include ".\BubbleSort.cpp"
 #include ".\GnomeSort.cpp"
 #include ".\StoogleSort.cpp"
+#include ".\RadixSort.cpp"
 
-int MAX_ELEM = 100;// 400, 267, 200, 160, 133, 114, 100, 89, 80;
+int MAX_ELEM = 200;// 400, 267, 200, 160, 133, 114, 100, 89, 80;
 
 std::vector<int> testVec;
 
@@ -54,7 +55,7 @@ int main(int argc, char* argv[]) {
 	// std::random_shuffle(testVec.begin(), testVec.end());
 	// printPretty(testVec);
 	
-	// SortAlg::StoogleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	// SortAlg::RadixSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	// printPretty(testVec);
 	
@@ -73,8 +74,14 @@ int main(int argc, char* argv[]) {
 	//std::random_shuffle(testVec.begin(), testVec.end());
 	//SortAlgVis::GnomeSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
+	//std::random_shuffle(testVec.begin(), testVec.end());
+	//SortAlgVis::StoogleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	
 	std::random_shuffle(testVec.begin(), testVec.end());
-	SortAlgVis::StoogleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	SortAlgVis::RadixSort_LSD(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	
+	std::random_shuffle(testVec.begin(), testVec.end());
+	//SortAlgVis::RadixSort_MSD(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	
 	
