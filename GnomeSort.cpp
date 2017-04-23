@@ -33,3 +33,22 @@ namespace SortAlg {
 		}
 	}
 }
+
+namespace SortAlgVis {
+	template <typename ITER, typename FUNC>
+	void GnomeSort(ITER start, ITER end, FUNC cmp) {
+		ITER idx = start;
+		while(idx < end) {
+			::gWindow->render({idx, idx - 1});
+			if(idx == start || !cmp(*(idx), *(idx - 1))) {
+				idx++;
+				::gWindow->render({idx, idx - 1});
+			} else {
+				std::iter_swap(idx, idx - 1);
+				::gWindow->render({idx, idx - 1});
+				idx--;
+				::gWindow->render({idx, idx - 1});
+			}
+		}
+	}
+}
