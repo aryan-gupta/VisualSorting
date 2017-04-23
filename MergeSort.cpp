@@ -20,6 +20,21 @@
 
 namespace SortAlg {	
 	template <typename ITER>
+	void MergeSortMerge(ITER start, ITER end, ITER mid) {
+		ITER i = start, j = mid;
+		
+		for(ITER k = start; k < end; ++k) {
+			if(i < mid && (j >= end || *i <= *j)) {
+				std::iter_swap(k, i);
+				i++;
+			} else {
+				std::iter_swap(k, j);
+				j++;
+			}
+		}
+	}
+
+	template <typename ITER>
 	void MergeSort(ITER start, ITER end) {
 		if(end - start < 2)
 			return;
@@ -30,21 +45,5 @@ namespace SortAlg {
 		MergeSort(mid, end);
 		
 		MergeSortMerge(start, end, mid);
-	}
-	
-	template <typename ITER>
-	void MergeSortMerge(bool up, ITER start, ITER end, ITER mid) {
-		ITER i = start, j = mid
-		
-		for(k = start; k < end; ++k) {
-			if(i < mid && (j >= end || *i <= *j)) {
-				std::iter_swap(k, i);
-				i++;
-			} else {
-				std::iter_swap(k, j);
-				j++;
-			}
-		}
-		
 	}
 }
