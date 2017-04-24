@@ -15,20 +15,32 @@
  * =============================================================================
  */
 
-#ifndef MAIN_H_INC
-#define MAIN_H_INC
+#ifndef WINDOW_H_INC
+#define WINDOW_H_INC
 
-class Window;
+#include <SDL.h>
 
-extern int MAX_ELEM;
+extern const int SCRN_H;
+extern const int SCRN_W;
+extern const int PAD;
+extern const int DELAY;
 
-extern std::vector<int> testVec;
+class Window {
+public:
+	Window();
+	~Window();
+	
+	void render(const std::vector<std::vector<int>::iterator>& colors = {}, int delay = DELAY);
+	
+	static int askSort();
+	
+private:
+	SDL_Window* window;
+	SDL_Renderer* renderer;
+	
+	void clear();
+	
+};
 
-extern Window* gWindow;
 
-int main(int argc, char* argv[]);
-
-template<class TYPE>
-void printPretty(std::vector<TYPE>& vec);
-
-#endif // MAIN_H_INC
+#endif // WINDOW_H_INC
