@@ -40,7 +40,7 @@
 #include ".\CockTailSort.cpp"
 #include ".\ShellSort.cpp"
 
-int MAX_ELEM = 128;// 1024, 512, 256, 128, 
+int MAX_ELEM = 512;// 1024, 512, 256, 128, 
 
 std::vector<int> testVec;
 
