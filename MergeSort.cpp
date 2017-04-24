@@ -19,31 +19,33 @@
 #include ".\inc\main.h"
 
 namespace SortAlg {	
-	template <typename ITER>
-	void MergeSortMerge(ITER start, ITER end, ITER mid) {
-		ITER i = start, j = mid;
-		
-		for(ITER k = start; k < end; ++k) {
-			if(i < mid && (j >= end || *i <= *j)) {
-				std::iter_swap(k, i);
-				i++;
-			} else {
-				std::iter_swap(k, j);
-				j++;
-			}
-		}
+	template<typename ITER>
+	std::vector<typename ITER::value_type> merge(const ITER begin, const ITER mid, const ITER end) {
+		std::vector<typename ITER::value_type> v;
+		ITER it_l{ begin }, it_r{ mid };
+		const ITER it_mid{ mid }, it_end{ end };
+
+		while (it_l != it_mid && it_r != it_end) {
+			v.push_back((*it_l <= *it_r) ? *it_l++ : *it_r++);
+		}   
+
+		v.insert(v.end(), it_l, it_mid);    
+		v.insert(v.end(), it_r, it_end);
+
+		return std::move(v);
 	}
 
 	template <typename ITER>
-	void MergeSort(ITER start, ITER end) {
-		if(end - start < 2)
+	void MergeSort(ITER begin, ITER end) {
+		auto size = std::distance(begin, end);
+		if (size < 2)
 			return;
-		
-		ITER mid = start + (end - start) / 2;
-		
-		MergeSort(start, mid);
+
+		auto mid = std::next(begin, size / 2);
+		MergeSort(begin, mid);
 		MergeSort(mid, end);
-		
-		MergeSortMerge(start, end, mid);
+
+		auto &&v = merge(begin, mid, end);
+		std::move(v.cbegin(), v.cend(), begin);
 	}
 }
