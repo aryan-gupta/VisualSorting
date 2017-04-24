@@ -39,7 +39,7 @@
 #include ".\BitonicSort.cpp"
 #include ".\CockTailSort.cpp"
 
-int MAX_ELEM = 10;// 400, 267, 200, 160, 133, 114, 100, 89, 80;
+int MAX_ELEM = 128;// 1024, 512, 256, 128, 
 
 std::vector<int> testVec;
 
@@ -51,17 +51,17 @@ int main(int argc, char* argv[]) {
 	
 	int choice = Window::askSort();
 	
-	gWindow = new Window();
-	
 	for(int i = 0; i < MAX_ELEM; ++i)
 		testVec.push_back(i);
 	
-	std::random_shuffle(testVec.begin(), testVec.end());
-	printPretty(testVec);
+	gWindow = new Window();
 	
-	SortAlg::CockTailSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	// std::random_shuffle(testVec.begin(), testVec.end());
+	// printPretty(testVec);
 	
-	printPretty(testVec);
+	// SortAlg::CockTailSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	
+	// printPretty(testVec);
 	
 	
 	switch(choice) {
@@ -108,6 +108,11 @@ int main(int argc, char* argv[]) {
 		case 8:
 			std::random_shuffle(testVec.begin(), testVec.end());
 			SortAlgVis::BitonicSort(testVec.begin(), testVec.end());
+		break;
+		
+		case 9:
+			std::random_shuffle(testVec.begin(), testVec.end());
+			SortAlgVis::CockTailSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 		break;
 		
 		default:
