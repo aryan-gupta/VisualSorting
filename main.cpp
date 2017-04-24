@@ -57,12 +57,12 @@ int main(int argc, char* argv[]) {
 	
 	gWindow = new Window();
 	
-	std::random_shuffle(testVec.begin(), testVec.end());
-	printPretty(testVec);
+	// std::random_shuffle(testVec.begin(), testVec.end());
+	// printPretty(testVec);
 	
-	SortAlg::ShellSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	// SortAlg::ShellSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
-	printPretty(testVec);
+	// printPretty(testVec);
 	
 	
 	switch(choice) {
@@ -114,6 +114,11 @@ int main(int argc, char* argv[]) {
 		case 9:
 			std::random_shuffle(testVec.begin(), testVec.end());
 			SortAlgVis::CockTailSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+		break;
+		
+		case 10:
+			std::random_shuffle(testVec.begin(), testVec.end());
+			SortAlgVis::ShellSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 		break;
 		
 		default:
