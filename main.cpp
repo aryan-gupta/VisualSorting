@@ -57,7 +57,7 @@ int main(int argc, char* argv[]) {
 	std::random_shuffle(testVec.begin(), testVec.end());
 	printPretty(testVec);
 	
-	SortAlg::ShellSort(testVec.begin(), testVec.end());
+	SortAlg::HeapSort(testVec.begin(), testVec.end());
 	
 	printPretty(testVec);
 	system("pause");

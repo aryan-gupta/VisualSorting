@@ -18,24 +18,11 @@
 
 namespace SortAlg {
 	std::size_t heap_size;
-	
-	std::size_t heap_parent (std::size_t i) {
-        return i / 2;
-    }
-
-    /* For left & right, note that arrays are 0-based */
-    std::size_t heap_left (std::size_t i) {
-        return 2*(i + 1) - 1;
-    }
-
-    std::size_t heap_right (std::size_t i) {
-        return 2*(i + 1);
-    }
 
     template<typename Iterator>
     void max_heapify (Iterator begin, std::size_t i) {
-        std::size_t l  = heap_left (i);
-        std::size_t r  = heap_right (i);
+        std::size_t l  = 2*(i + 1) - 1;
+        std::size_t r  = 2*(i + 1);
         std::size_t largest = i;
 
         if (l < heap_size && *(begin + l) > *(begin + i)) {
@@ -51,7 +38,7 @@ namespace SortAlg {
     }
 	
 	template<typename Iterator>
-	binheap (Iterator begin, Iterator end) {
+	void HeapSort (Iterator begin, Iterator end) {
 		heap_size = std::distance (begin, end);
 		
         if (heap_size <= 1) {
