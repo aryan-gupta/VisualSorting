@@ -38,6 +38,7 @@
 #include ".\RadixSort.cpp"
 #include ".\BitonicSort.cpp"
 #include ".\CockTailSort.cpp"
+#include ".\ShellSort.cpp"
 
 int MAX_ELEM = 128;// 1024, 512, 256, 128, 
 
@@ -56,12 +57,12 @@ int main(int argc, char* argv[]) {
 	
 	gWindow = new Window();
 	
-	// std::random_shuffle(testVec.begin(), testVec.end());
-	// printPretty(testVec);
+	std::random_shuffle(testVec.begin(), testVec.end());
+	printPretty(testVec);
 	
-	// SortAlg::CockTailSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	SortAlg::ShellSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
-	// printPretty(testVec);
+	printPretty(testVec);
 	
 	
 	switch(choice) {
