@@ -30,11 +30,11 @@ namespace SortAlgVis {
 	ITER min_element(ITER start, ITER end, FUNC cmp) {
 		ITER min = start;
 		for(; start < end; start++) {
-			::gWindow->render({start, min}, 5);
+			::gWindow->render({start, min});
 			if(cmp(*start, *min)) {
-				::gWindow->render({start, min}, 5);
+				::gWindow->render({start, min});
 				min = start;
-				::gWindow->render({start, min}, 5);
+				::gWindow->render({start, min});
 			}
 		}
 		return min;
