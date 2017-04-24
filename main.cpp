@@ -36,9 +36,10 @@
 #include ".\GnomeSort.cpp"
 #include ".\StoogleSort.cpp"
 #include ".\RadixSort.cpp"
-#include "BitonicSort.cpp"
+#include ".\BitonicSort.cpp"
+#include ".\CockTailSort.cpp"
 
-int MAX_ELEM = 1024;// 400, 267, 200, 160, 133, 114, 100, 89, 80;
+int MAX_ELEM = 10;// 400, 267, 200, 160, 133, 114, 100, 89, 80;
 
 std::vector<int> testVec;
 
@@ -55,12 +56,12 @@ int main(int argc, char* argv[]) {
 	for(int i = 0; i < MAX_ELEM; ++i)
 		testVec.push_back(i);
 	
-	// std::random_shuffle(testVec.begin(), testVec.end());
-	// printPretty(testVec);
+	std::random_shuffle(testVec.begin(), testVec.end());
+	printPretty(testVec);
 	
-	// SortAlg::BitonicSort(testVec.begin(), testVec.end());
+	SortAlg::CockTailSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
-	// printPretty(testVec);
+	printPretty(testVec);
 	
 	
 	switch(choice) {
