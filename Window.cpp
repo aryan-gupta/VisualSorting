@@ -120,6 +120,7 @@ int Window::askSort() {
 		 << "6. Radix LSD Sort" << endl
 		 << "7. Radix MSD Sort" << endl
 		 << "8. Bitonic Sort" << endl
+		 << "9. CockTail Sort" << endl
 		 << endl;
 		 
 	int c;
