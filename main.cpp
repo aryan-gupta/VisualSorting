@@ -39,6 +39,7 @@
 #include ".\BitonicSort.cpp"
 #include ".\CockTailSort.cpp"
 #include ".\ShellSort.cpp"
+#include ".\HeapSort.cpp"
 
 int MAX_ELEM = 1024;// 1024, 512, 341. 256, 204, 128, 
 
@@ -50,17 +51,20 @@ int main(int argc, char* argv[]) {
 	PRINT_LEGAL_TERR;
 	srand(time(0));
 	
+	for(int i = 0; i < 10; ++i)
+		testVec.push_back(i);
+	
+	std::random_shuffle(testVec.begin(), testVec.end());
+	printPretty(testVec);
+	
+	SortAlg::ShellSort(testVec.begin(), testVec.end());
+	
+	printPretty(testVec);
+	system("pause");
+	
 	int choice = Window::askSort();
 	
 	gWindow = new Window();
-	
-	// std::random_shuffle(testVec.begin(), testVec.end());
-	// printPretty(testVec);
-	
-	// SortAlg::ShellSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-	
-	// printPretty(testVec);
-	
 	
 	switch(choice) {
 		case 0: MAX_ELEM = 128;
