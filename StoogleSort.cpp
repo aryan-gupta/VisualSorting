@@ -26,7 +26,7 @@ namespace SortAlg {
 		}
 		
 		if(end - start + 1 > 2) {
-			int prt = (end - start + 1)/3;
+			std::size_t prt = (end - start + 1)/3;
 			
 			StoogleSort(start, end - prt + 1, cmp);
 			StoogleSort(start + prt, end + 1, cmp);
@@ -46,7 +46,7 @@ namespace SortAlgVis {
 		}
 		
 		if(end - start + 1 > 2) {
-			int prt = (end - start + 1)/3;
+			std::size_t prt = (end - start + 1)/3;
 			
 			StoogleSort(start, end - prt + 1, cmp);
 			StoogleSort(start + prt, end + 1, cmp);
