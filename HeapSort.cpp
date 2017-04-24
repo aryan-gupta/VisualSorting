@@ -17,48 +17,59 @@
 #include "info.h"
 
 namespace SortAlg {
-		template <typename ITER>
-	void Heapify(ITER start, ITER end) {
+	std::size_t heap_size;
 	
-	}
+	std::size_t heap_parent (std::size_t i) {
+        return i / 2;
+    }
+
+    /* For left & right, note that arrays are 0-based */
+    std::size_t heap_left (std::size_t i) {
+        return 2*(i + 1) - 1;
+    }
+
+    std::size_t heap_right (std::size_t i) {
+        return 2*(i + 1);
+    }
+
+    template<typename Iterator>
+    void max_heapify (Iterator begin, std::size_t i) {
+        std::size_t l  = heap_left (i);
+        std::size_t r  = heap_right (i);
+        std::size_t largest = i;
+
+        if (l < heap_size && *(begin + l) > *(begin + i)) {
+            largest = l;
+        }
+        if (r < heap_size && *(begin + r) > *(begin + largest)) {
+            largest = r;
+        }
+        if (largest != i) {
+            std::swap (*(begin + i), *(begin + largest));
+            max_heapify (begin, largest);
+        }
+    }
 	
-	template <typename ITER, typename FUNC>
-	void Heapify(ITER first, ITER start, ITER end) {
-		ITER j = (start - first) * 2;
-		typename ITER::value_type tmp = *start;
+	template<typename Iterator>
+	binheap (Iterator begin, Iterator end) {
+		heap_size = std::distance (begin, end);
 		
-		while(j < end) {
-			if(j < end && *(j + 1) > *(j)) {
-				j++;
-			}
-			
-			if(tmp > *(j)) {
-				break;
-			} //else
-			
-			if(tmp <= *(j)) {
-				*(j / 2) = *(j);
-				j = 2 * j;
-			}
-		}
-		*(j / 2) = tmp;
-	}
-	
-	template <typename ITERC>
-	void HeapBuild(ITER start, ITER end) {
-		int mid = (end - start)/2;
-		for(; mid >= 1; --mid) {
-			Heapify(start, start + mid, end);
-		}
-	}
-	
-	template <typename ITER>
-	void HeapSort(ITER start, ITER end) {
-		HeapBuild(start, end);
-		Heapify();
-		
-		end--;
-		
-		while(end > start)
-	}
+        if (heap_size <= 1) {
+            return;
+        }
+        
+        /* build max heap */
+        for (std::size_t i = heap_size / 2 - 1;; i--) {
+            max_heapify (begin, i);
+            if (i == 0) {
+                break;
+            }
+        }
+        /* heap sort itself */
+        for (std::size_t i = heap_size - 1; i > 0; i--) {
+            std::swap (*begin, *(begin + i));
+            heap_size -= 1;
+            max_heapify (begin, 0);
+        }
+    }
 }
