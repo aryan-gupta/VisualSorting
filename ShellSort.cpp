@@ -16,4 +16,21 @@
  */
 #include "info.h"
 
-#include ".\inc\main.h"
+#include <array>
+
+namespace SortAlg {
+	template <typename ITER, typename FUNC>
+	void ShellSort(ITER start, ITER end, FUNC cmp) {
+		array<int,8> gaps = {701, 301, 132, 57, 23, 10, 4, 1};
+		
+		for(int gap : gaps) {
+			for(int i = gap; i < (end - start); ++i) {
+				typename ITER::value_type temp = *(start + i);
+				for(int j = i; j >= gap && *(start + j - gap) > temp; j -= gap) {
+					*(start + j) = *(start + j - gap);
+				}
+				*(start + j) = temp;
+			} 
+		}
+	}
+}
