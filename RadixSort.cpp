@@ -16,6 +16,8 @@
  */
 #include "info.h"
 
+#include <array>
+
 namespace SortAlg {
 	template <typename ITER, typename FUNC>
 	void RadixSort(ITER start, ITER end, FUNC cmp) {
@@ -43,13 +45,31 @@ namespace SortAlgVis {
 	}
 	
 	template <typename ITER>
+	void RadixSortGroup(ITER start, ITER end, int radix) {
+		std::array<std::vector<typename ITER::value_type>, 10> bins;
+		// split into bins
+		for(ITER idx = start; idx < end; ++idx) {
+			bins[(*(idx) / radix) % 10].push_back(*idx);
+		}
+		// compile them together again
+		for(auto bin : bins) {
+			for(auto val : bin) {
+				*start = val;
+				start++;				
+				::gWindow->render({start});
+			}
+		}
+	}
+	
+	template <typename ITER>
 	void RadixSort_LSD(ITER start, ITER end) {
 		ITER max = SortAlgVis::max_element(start, end);
 		
-		for(int exp = 10; exp <= (*max) * 100; exp *= 10) {
+		for(int exp = 1; exp <= *max * 10; exp *= 10) {
 			::gWindow->render({start});
-			SortAlgVis::InsertionSort(start, end, [&](int a, int b) { return a % exp < b % exp; });
+			RadixSortGroup(start, end, exp);
 		}
+		::gWindow->render({start});
 	}
 	
 	template <typename ITER>
@@ -58,7 +78,7 @@ namespace SortAlgVis {
 		
 		for(int exp = *max; exp > 0; exp /= 10) {
 			::gWindow->render({start});
-			SortAlgVis::InsertionSort(start, end, [&](int a, int b) { return a / exp < b / exp; });
+			RadixSortGroup(start, end, exp);
 		}
 	}
 }

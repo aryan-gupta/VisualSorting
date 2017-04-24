@@ -105,7 +105,7 @@ int main(int argc, char* argv[]) {
 			SortAlgVis::StoogleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 		break;
 		
-		case 6: MAX_ELEM = 128;
+		case 6: MAX_ELEM = 1024;
 			for(int i = 0; i < MAX_ELEM; ++i)
 				testVec.push_back(i);
 			std::random_shuffle(testVec.begin(), testVec.end());
