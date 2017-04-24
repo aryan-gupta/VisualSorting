@@ -38,8 +38,9 @@
 #include ".\RadixSort.cpp"
 #include ".\BitonicSort.cpp"
 #include ".\CockTailSort.cpp"
+#include ".\ShellSort.cpp"
 
-int MAX_ELEM = 128;// 1024, 512, 256, 128, 
+int MAX_ELEM = 512;// 1024, 512, 256, 128, 
 
 std::vector<int> testVec;
 
@@ -59,7 +60,7 @@ int main(int argc, char* argv[]) {
 	// std::random_shuffle(testVec.begin(), testVec.end());
 	// printPretty(testVec);
 	
-	// SortAlg::CockTailSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	// SortAlg::ShellSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	// printPretty(testVec);
 	
@@ -113,6 +114,11 @@ int main(int argc, char* argv[]) {
 		case 9:
 			std::random_shuffle(testVec.begin(), testVec.end());
 			SortAlgVis::CockTailSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+		break;
+		
+		case 10:
+			std::random_shuffle(testVec.begin(), testVec.end());
+			SortAlgVis::ShellSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 		break;
 		
 		default:
