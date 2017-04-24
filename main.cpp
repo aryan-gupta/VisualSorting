@@ -51,16 +51,16 @@ int main(int argc, char* argv[]) {
 	PRINT_LEGAL_TERR;
 	srand(time(0));
 	
-	for(int i = 0; i < 10; ++i)
-		testVec.push_back(i);
+	// for(int i = 0; i < 10; ++i)
+		// testVec.push_back(i);
 	
-	std::random_shuffle(testVec.begin(), testVec.end());
-	printPretty(testVec);
+	// std::random_shuffle(testVec.begin(), testVec.end());
+	// printPretty(testVec);
 	
-	SortAlg::HeapSort(testVec.begin(), testVec.end());
+	// SortAlg::HeapSort(testVec.begin(), testVec.end());
 	
-	printPretty(testVec);
-	system("pause");
+	// printPretty(testVec);
+	// system("pause");
 	
 	int choice = Window::askSort();
 	
@@ -142,6 +142,13 @@ int main(int argc, char* argv[]) {
 				testVec.push_back(i);
 			std::random_shuffle(testVec.begin(), testVec.end());
 			SortAlgVis::ShellSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+		break;
+		
+		case 11: MAX_ELEM = 512;
+			for(int i = 0; i < MAX_ELEM; ++i)
+				testVec.push_back(i);
+			std::random_shuffle(testVec.begin(), testVec.end());
+			SortAlgVis::HeapSort(testVec.begin(), testVec.end());
 		break;
 		
 		default:
