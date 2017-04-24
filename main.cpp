@@ -144,7 +144,7 @@ int main(int argc, char* argv[]) {
 			SortAlgVis::ShellSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 		break;
 		
-		case 11: MAX_ELEM = 512;
+		case 11: MAX_ELEM = 1024;
 			for(int i = 0; i < MAX_ELEM; ++i)
 				testVec.push_back(i);
 			std::random_shuffle(testVec.begin(), testVec.end());
