@@ -62,11 +62,12 @@ namespace SortAlg {
 namespace SortAlgVis {
 	std::size_t heap_size;
 
-    template<typename Iterator>
-    void max_heapify (Iterator begin, std::size_t i) {
+    template<typename ITER>
+    void Heapify(ITER begin, std::size_t i) {
         std::size_t l  = 2*(i + 1) - 1;
         std::size_t r  = 2*(i + 1);
         std::size_t largest = i;
+		
 		gWindow->render({begin + l, begin + r, begin + largest});
         if (l < heap_size && *(begin + l) > *(begin + i)) {
             largest = l;
@@ -77,14 +78,14 @@ namespace SortAlgVis {
         }
 		gWindow->render({begin + l, begin + r, begin + largest});
         if (largest != i) {
-            std::swap (*(begin + i), *(begin + largest));
-            max_heapify (begin, largest);
+            std::iter_swap(begin + i, begin + largest);
+            Heapify(begin, largest);
         }
 		gWindow->render({begin + l, begin + r, begin + largest});
     }
 	
-	template<typename Iterator>
-	void HeapSort (Iterator begin, Iterator end) {
+	template<typename ITER>
+	void HeapSort(ITER begin, ITER end) {
 		heap_size = std::distance(begin, end);
 		
         if (heap_size <= 1) {
@@ -94,7 +95,7 @@ namespace SortAlgVis {
         /* build max heap */
 		for (std::size_t i = heap_size / 2 - 1;; i--) {
 			gWindow->render();
-            max_heapify (begin, i);
+            Heapify (begin, i);
 			if(i == 0) break;
         }
         /* heap sort itself */
@@ -104,7 +105,7 @@ namespace SortAlgVis {
             //gWindow->render({begin, begin + i});
 			heap_size -= 1;
 			gWindow->render({begin, begin + i});
-            max_heapify (begin, 0);
+            Heapify (begin, 0);
         }
     }
 
