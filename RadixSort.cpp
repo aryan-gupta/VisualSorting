@@ -34,22 +34,23 @@ namespace SortAlgVis {
 	ITER max_element(ITER start, ITER end) {
 		ITER max = start;
 		for(; start < end; start++) {
-			::gWindow->render({start, max}, 1);
+			::gWindow->render({start, max});
 			if(*start > *max) {
-				::gWindow->render({start, max}, 1);
+				::gWindow->render({start, max});
 				max = start;
-				::gWindow->render({start, max}, 1);
+				::gWindow->render({start, max});
 			}
 		}
 		return max;
 	}
 	
 	template <typename ITER>
-	void RadixSortGroup(ITER start, ITER end, int radix) {
+	void RadixSortGroup_LSD(ITER start, ITER end, int radix) {
 		std::array<std::vector<typename ITER::value_type>, 10> bins;
 		// split into bins
 		for(ITER idx = start; idx < end; ++idx) {
-			bins[(*(idx) / radix) % 10].push_back(*idx);
+			bins[(*(idx) / radix) % 10].push_back(*idx); 
+			::gWindow->render({idx});
 		}
 		// compile them together again
 		for(auto bin : bins) {
@@ -65,9 +66,11 @@ namespace SortAlgVis {
 	void RadixSort_LSD(ITER start, ITER end) {
 		ITER max = SortAlgVis::max_element(start, end);
 		
-		for(int exp = 1; exp <= *max * 10; exp *= 10) {
+		int size = std::to_string(*max).size();
+		
+		for(int exp = 0; exp < 100; ++exp) {
 			::gWindow->render({start});
-			RadixSortGroup(start, end, exp);
+			RadixSortGroup_LSD(start, end, pow(10, exp));
 		}
 		::gWindow->render({start});
 	}
