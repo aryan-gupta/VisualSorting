@@ -112,11 +112,13 @@ int main(int argc, char* argv[]) {
 			SortAlgVis::RadixSort_LSD(testVec.begin(), testVec.end());
 		break;
 		
-		case 7: MAX_ELEM = 256;
+		case 7: MAX_ELEM = 512;
 			for(int i = 0; i < MAX_ELEM; ++i)
 				testVec.push_back(i);
+			printPretty(testVec);
 			std::random_shuffle(testVec.begin(), testVec.end());
 			SortAlgVis::RadixSort_MSD(testVec.begin(), testVec.end());
+			printPretty(testVec);
 		break;
 
 		case 8: MAX_ELEM = 1024;

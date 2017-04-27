@@ -17,6 +17,8 @@
 #include "info.h"
 
 #include <array>
+#include <deque>
+#include <cmath>
 
 namespace SortAlg {
 	template <typename ITER, typename FUNC>
@@ -76,12 +78,31 @@ namespace SortAlgVis {
 	}
 	
 	template <typename ITER>
+	void RadixSortGroup_MSD(ITER start, ITER end, int radix) {
+		
+		// std::stable_sort(start, end, [&](int a, int b) { return (a % radix) < (b % radix); });
+		
+		std::array<std::deque<typename ITER::value_type>, 10> bins;
+		//split into bins
+		for(ITER idx = start; idx != end; ++idx) {
+			bins[(*(idx) % radix)].push_back(*idx); 
+		}
+		//compile them together again
+		for(auto& bin : bins) {	
+			start = std::copy(bin.begin(), bin.end(), start);
+			::gWindow->render({start});
+		}
+	}
+	
+	template <typename ITER>
 	void RadixSort_MSD(ITER start, ITER end) {
 		ITER max = SortAlgVis::max_element(start, end);
 		
-		for(int exp = *max; exp > 0; exp /= 10) {
+		int size = std::to_string(*max).size();
+		
+		for(int exp = 1000; exp > -1; --exp) {
 			::gWindow->render({start});
-			RadixSortGroup(start, end, exp);
+			RadixSortGroup_MSD(start, end, pow(10, exp));
 		}
 	}
 }
