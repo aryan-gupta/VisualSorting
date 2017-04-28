@@ -26,8 +26,8 @@
 #include <vector>
 #include <algorithm>
 
-#include ".\inc\main.h"
-#include ".\inc\Window.h"
+#include "main.h"
+#include "Window.h"
 
 #include ".\InsertionSort.cpp"
 #include ".\QuickSort.cpp"

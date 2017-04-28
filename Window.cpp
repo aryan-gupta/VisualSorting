@@ -20,8 +20,8 @@
 #include <iostream>
 #include <SDL.h>
 
-#include ".\inc\main.h"
-#include ".\inc\Window.h"
+#include "main.h"
+#include "Window.h"
 
 const int SCRN_W = 1044;
 const int SCRN_H = 620;

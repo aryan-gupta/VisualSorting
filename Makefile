@@ -38,10 +38,10 @@ CPP = InsertionSort.cpp QuickSort.cpp SelectionSort.cpp BubbleSort.cpp GnomeSort
 RadixSort.cpp BitonicSort.cpp CockTailSort.cpp MergeSort.cpp
 # ============================ RECEPIES ========================================
 
-$(OBJDIR)/Window.o: ./Window.cpp ./inc/Window.h
+$(OBJDIR)/Window.o: ./Window.cpp ./Window.h
 	$(CC) ./Window.cpp -o ./$@ $(CFLAGS) $(L_SDLC)
 
-$(OBJDIR)/main.o: ./main.cpp ./inc/main.h $(CPP)
+$(OBJDIR)/main.o: ./main.cpp ./main.h $(CPP)
 	$(CC) ./main.cpp -o ./$@ $(CFLAGS) $(L_SDLC)
 
 $(OBJDIR)/%.o: ./%.cpp
