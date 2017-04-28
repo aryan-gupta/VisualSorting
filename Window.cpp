@@ -122,6 +122,7 @@ int Window::askSort() {
 		 << "8.  Bitonic Sort" << endl
 		 << "9.  CockTail Sort" << endl
 		 << "10. Shell Sort" << endl
+		 << "11. Heap Sort" << endl
 		 << endl;
 		 
 	int c;
