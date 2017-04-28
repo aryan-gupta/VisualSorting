@@ -53,9 +53,6 @@ int main(int argc, char* argv[]) {
 	
 	int choice = Window::askSort();
 	
-	for(int i = 0; i < MAX_ELEM; ++i)
-		testVec.push_back(i);
-	
 	gWindow = new Window();
 	
 	// std::random_shuffle(testVec.begin(), testVec.end());
@@ -146,7 +143,9 @@ int main(int argc, char* argv[]) {
 			SortAlgVis::ShellSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 		break;
 		
-		case 9:
+		case 11: MAX_ELEM = 1024;
+			for(int i = 0; i < MAX_ELEM; ++i)
+				testVec.push_back(i);
 			std::random_shuffle(testVec.begin(), testVec.end());
 			SortAlgVis::MergeSort(testVec.begin(), testVec.end());
 		break;
