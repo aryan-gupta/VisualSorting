@@ -35,6 +35,7 @@ CFLAGS = $(DEBUG) -Wall -std=c++17 -c
 LFLAGS = $(DEBUG) -Wall
 OBJ = $(OBJDIR)/res.o $(OBJDIR)/Window.o $(OBJDIR)/main.o
 CPP = InsertionSort.cpp QuickSort.cpp SelectionSort.cpp BubbleSort.cpp GnomeSort.cpp StoogleSort.cpp \
+RadixSort.cpp BitonicSort.cpp CockTailSort.cpp HeapSort.cpp
 RadixSort.cpp BitonicSort.cpp CockTailSort.cpp MergeSort.cpp
 # ============================ RECEPIES ========================================
 
