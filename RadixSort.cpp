@@ -17,6 +17,7 @@
 #include "info.h"
 
 #include <array>
+#include <cmath>
 
 namespace SortAlg {
 	template <typename ITER, typename FUNC>
@@ -81,7 +82,7 @@ namespace SortAlgVis {
 		
 		for(int exp = *max; exp > 0; exp /= 10) {
 			::gWindow->render({start});
-			RadixSortGroup(start, end, exp);
+			RadixSortGroup_LSD(start, end, exp);
 		}
 	}
 }

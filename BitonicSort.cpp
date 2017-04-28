@@ -16,8 +16,6 @@
  */
 #include "info.h"
 
-#include ".\inc\main.h"
-
 namespace SortAlg {	
 	template <typename ITER>
 	void BitonicSortCompare(bool up, ITER start, ITER end) {

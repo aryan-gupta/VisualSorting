@@ -16,8 +16,6 @@
  */
 #include "info.h"
 
-#include ".\inc\main.h"
-
 namespace SortAlg {
 	template <typename ITER, typename FUNC>
 	void CockTailSort(ITER start, ITER end, FUNC cmp) {

@@ -16,8 +16,6 @@
  */
 #include "info.h"
 
-#include ".\inc\main.h"
-
 namespace SortAlg {	
 	template<typename ITER>
 	std::vector<typename ITER::value_type> MergeSortMerge(ITER lbegin, const ITER mid, const ITER end) {
