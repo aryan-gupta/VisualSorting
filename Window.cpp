@@ -123,7 +123,7 @@ int Window::askSort() {
 		 << "9.  CockTail Sort" << endl
 		 << "10. Shell Sort" << endl
 		 << "11. Heap Sort" << endl
-		 << "11. Merge Sort" << endl
+		 << "12. Merge Sort" << endl
 		 << endl;
 		 
 	int c;
