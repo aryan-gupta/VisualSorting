@@ -20,49 +20,51 @@
 
 namespace SortAlg {	
 	template<typename ITER>
-	std::vector<typename ITER::value_type> merge(const ITER begin, const ITER mid, const ITER end) {
-		std::vector<typename ITER::value_type> v;
-		ITER it_l{ begin }, it_r{ mid };
-		const ITER it_mid{ mid }, it_end{ end };
+	std::vector<typename ITER::value_type> MergeSortMerge(ITER lbegin, const ITER mid, const ITER end) {
+		std::vector<typename ITER::value_type> v; // create tmp storage
+		ITER rbegin = mid;
+		
+		// Go through the two halves of the array and merge them.
+		// if the left half iterator is smaller then insert that in to the vector
+		// if the right side vector is smaller then enter that. lastly increment 
+		// the iterator to the next point
+		while (lbegin != mid && rbegin != end)
+			v.push_back((*lbegin <= *rbegin)? *lbegin++ : *rbegin++);
 
-		while (it_l != it_mid && it_r != it_end) {
-			v.push_back((*it_l <= *it_r) ? *it_l++ : *it_r++);
-		}   
+		v.insert(v.end(), lbegin, mid); // Add the remaining elements
+		v.insert(v.end(), rbegin, end);
 
-		v.insert(v.end(), it_l, it_mid);    
-		v.insert(v.end(), it_r, it_end);
-
-		return std::move(v);
+		return std::move(v); // return the sorted array
 	}
 
 	template <typename ITER>
 	void MergeSort(ITER begin, ITER end) {
-		auto size = std::distance(begin, end);
-		if (size < 2)
+		auto size = std::distance(begin, end); // get the size of the section we need to sort
+		if (size < 2) // if its just one then consider it sorted
 			return;
 
-		auto mid = std::next(begin, size / 2);
-		MergeSort(begin, mid);
-		MergeSort(mid, end);
+		auto mid = std::next(begin, size / 2); // find the mid point
+		MergeSort(begin, mid); // sort the first half
+		MergeSort(mid, end);   // then the second half
 
-		auto &&v = merge(begin, mid, end);
-		std::move(v.cbegin(), v.cend(), begin);
+		auto &&v = MergeSortMerge(begin, mid, end);      // merge them together into one
+		std::move(v.begin(), v.end(), begin); // apply merge to the orginal array
 	}
 }
 
 namespace SortAlgVis {	
 	template<typename ITER>
-	std::vector<typename ITER::value_type> merge(const ITER begin, const ITER mid, const ITER end) {
+	std::vector<typename ITER::value_type> MergeSortMerge(ITER lbegin, const ITER mid, const ITER end) {
 		std::vector<typename ITER::value_type> v;
-		ITER it_l{ begin }, it_r{ mid };
-		const ITER it_mid{ mid }, it_end{ end };
-
-		while (it_l != it_mid && it_r != it_end) {
-			v.push_back((*it_l <= *it_r) ? *it_l++ : *it_r++);
-		}   
-
-		v.insert(v.end(), it_l, it_mid);    
-		v.insert(v.end(), it_r, it_end);
+		ITER rbegin = mid;
+		::gWindow->render({lbegin, rbegin, end});
+		while (lbegin != mid && rbegin != end) {
+			v.push_back((*lbegin <= *rbegin)? *lbegin++ : *rbegin++);
+			::gWindow->render({lbegin, rbegin, end});
+		}
+		
+		v.insert(v.end(), lbegin, mid);
+		v.insert(v.end(), rbegin, end);
 
 		return std::move(v);
 	}
@@ -78,9 +80,9 @@ namespace SortAlgVis {
 		MergeSort(begin, mid);
 		MergeSort(mid, end);
 
-		auto &&v = merge(begin, mid, end);
+		auto &&v = MergeSortMerge(begin, mid, end);
 		::gWindow->render({begin, end, mid});
-		std::move(v.cbegin(), v.cend(), begin);
+		std::move(v.begin(), v.end(), begin);
 		::gWindow->render({begin, end, mid});
 	}
 }
