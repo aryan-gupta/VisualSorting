@@ -65,107 +65,109 @@ int main(int argc, char* argv[]) {
 	// printPretty(testVec);
 	// system("pause");
 	
-	int choice = Window::askSort();
-	
-	gWindow = new Window();
-	
-	switch(choice) {
-		case 0: MAX_ELEM = 128;
-			for(int i = 0; i < MAX_ELEM; ++i)
-				testVec.push_back(i);
-			std::random_shuffle(testVec.begin(), testVec.end());
-			SortAlgVis::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-		break;
+	while(true) {
+		int choice = Window::askSort();
 		
-		case 1: MAX_ELEM = 1024;
-			for(int i = 0; i < MAX_ELEM; ++i)
-				testVec.push_back(i);
-			std::random_shuffle(testVec.begin(), testVec.end());
-			SortAlgVis::QuickSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-		break;
-		
-		case 2: MAX_ELEM = 128;
-			for(int i = 0; i < MAX_ELEM; ++i)
-				testVec.push_back(i);
-			std::random_shuffle(testVec.begin(), testVec.end());
-			SortAlgVis::SelectionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-		break;
-		
-		case 3: MAX_ELEM = 128;
-			for(int i = 0; i < MAX_ELEM; ++i)
-				testVec.push_back(i);
-			std::random_shuffle(testVec.begin(), testVec.end());
-			SortAlgVis::BubbleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-		break;
-		
-		case 4: MAX_ELEM = 128;
-			for(int i = 0; i < MAX_ELEM; ++i)
-				testVec.push_back(i);
-			std::random_shuffle(testVec.begin(), testVec.end());
-			SortAlgVis::GnomeSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-		break;
-		
-		case 5: MAX_ELEM = 114;
-			for(int i = 0; i < MAX_ELEM; ++i)
-				testVec.push_back(i);
-			std::random_shuffle(testVec.begin(), testVec.end());
-			SortAlgVis::StoogleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-		break;
-		
-		case 6: MAX_ELEM = 1024;
-			for(int i = 0; i < MAX_ELEM; ++i)
-				testVec.push_back(i);
-			std::random_shuffle(testVec.begin(), testVec.end());
-			SortAlgVis::RadixSort_LSD(testVec.begin(), testVec.end());
-		break;
-		
-		case 7: MAX_ELEM = 256;
-			for(int i = 0; i < MAX_ELEM; ++i)
-				testVec.push_back(i);
-			std::random_shuffle(testVec.begin(), testVec.end());
-			SortAlgVis::RadixSort_MSD(testVec.begin(), testVec.end());
-		break;
+		gWindow = new Window();
+		switch(choice) {
+			case 0: MAX_ELEM = 128;
+				for(int i = 0; i < MAX_ELEM; ++i)
+					testVec.push_back(i);
+				std::random_shuffle(testVec.begin(), testVec.end());
+				SortAlgVis::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+			break;
+			
+			case 1: MAX_ELEM = 1024;
+				for(int i = 0; i < MAX_ELEM; ++i)
+					testVec.push_back(i);
+				std::random_shuffle(testVec.begin(), testVec.end());
+				SortAlgVis::QuickSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+			break;
+			
+			case 2: MAX_ELEM = 128;
+				for(int i = 0; i < MAX_ELEM; ++i)
+					testVec.push_back(i);
+				std::random_shuffle(testVec.begin(), testVec.end());
+				SortAlgVis::SelectionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+			break;
+			
+			case 3: MAX_ELEM = 128;
+				for(int i = 0; i < MAX_ELEM; ++i)
+					testVec.push_back(i);
+				std::random_shuffle(testVec.begin(), testVec.end());
+				SortAlgVis::BubbleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+			break;
+			
+			case 4: MAX_ELEM = 128;
+				for(int i = 0; i < MAX_ELEM; ++i)
+					testVec.push_back(i);
+				std::random_shuffle(testVec.begin(), testVec.end());
+				SortAlgVis::GnomeSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+			break;
+			
+			case 5: MAX_ELEM = 114;
+				for(int i = 0; i < MAX_ELEM; ++i)
+					testVec.push_back(i);
+				std::random_shuffle(testVec.begin(), testVec.end());
+				SortAlgVis::StoogleSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+			break;
+			
+			case 6: MAX_ELEM = 1024;
+				for(int i = 0; i < MAX_ELEM; ++i)
+					testVec.push_back(i);
+				std::random_shuffle(testVec.begin(), testVec.end());
+				SortAlgVis::RadixSort_LSD(testVec.begin(), testVec.end());
+			break;
+			
+			case 7: MAX_ELEM = 256;
+				for(int i = 0; i < MAX_ELEM; ++i)
+					testVec.push_back(i);
+				std::random_shuffle(testVec.begin(), testVec.end());
+				SortAlgVis::RadixSort_MSD(testVec.begin(), testVec.end());
+			break;
 
-		case 8: MAX_ELEM = 1024;
-			for(int i = 0; i < MAX_ELEM; ++i)
-				testVec.push_back(i);
-			std::random_shuffle(testVec.begin(), testVec.end());
-			SortAlgVis::BitonicSort(testVec.begin(), testVec.end());
-		break;
-		
-		case 9: MAX_ELEM = 64;
-			for(int i = 0; i < MAX_ELEM; ++i)
-				testVec.push_back(i);
-			std::random_shuffle(testVec.begin(), testVec.end());
-			SortAlgVis::CockTailSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-		break;
-		
-		case 10: MAX_ELEM = 512;
-			for(int i = 0; i < MAX_ELEM; ++i)
-				testVec.push_back(i);
-			std::random_shuffle(testVec.begin(), testVec.end());
-			SortAlgVis::ShellSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-		break;
-		
-		case 11: MAX_ELEM = 1024;
-			for(int i = 0; i < MAX_ELEM; ++i)
-				testVec.push_back(i);
-			std::random_shuffle(testVec.begin(), testVec.end());
-			SortAlgVis::HeapSort(testVec.begin(), testVec.end());
-		break;
-		
-		case 11: MAX_ELEM = 1024;
-			for(int i = 0; i < MAX_ELEM; ++i)
-				testVec.push_back(i);
-			std::random_shuffle(testVec.begin(), testVec.end());
-			SortAlgVis::MergeSort(testVec.begin(), testVec.end());
-		break;
-		
-		default:
-			std::cout << "Sorry, That is a Wrong Choice" << std::endl;
-		break;
+			case 8: MAX_ELEM = 1024;
+				for(int i = 0; i < MAX_ELEM; ++i)
+					testVec.push_back(i);
+				std::random_shuffle(testVec.begin(), testVec.end());
+				SortAlgVis::BitonicSort(testVec.begin(), testVec.end());
+			break;
+			
+			case 9: MAX_ELEM = 64;
+				for(int i = 0; i < MAX_ELEM; ++i)
+					testVec.push_back(i);
+				std::random_shuffle(testVec.begin(), testVec.end());
+				SortAlgVis::CockTailSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+			break;
+			
+			case 10: MAX_ELEM = 512;
+				for(int i = 0; i < MAX_ELEM; ++i)
+					testVec.push_back(i);
+				std::random_shuffle(testVec.begin(), testVec.end());
+				SortAlgVis::ShellSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+			break;
+			
+			case 11: MAX_ELEM = 1024;
+				for(int i = 0; i < MAX_ELEM; ++i)
+					testVec.push_back(i);
+				std::random_shuffle(testVec.begin(), testVec.end());
+				SortAlgVis::HeapSort(testVec.begin(), testVec.end());
+			break;
+			
+			case 12: MAX_ELEM = 1024;
+				for(int i = 0; i < MAX_ELEM; ++i)
+					testVec.push_back(i);
+				std::random_shuffle(testVec.begin(), testVec.end());
+				SortAlgVis::MergeSort(testVec.begin(), testVec.end());
+			break;
+			
+			default:
+				std::cout << "Sorry, That is a Wrong Choice" << std::endl;
+			break;
+		}
+		testVec.clear();
+		delete gWindow;
 	}
-	
 	
 	SDL_Event event;
 	while(true) {
