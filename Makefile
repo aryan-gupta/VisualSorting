@@ -36,6 +36,7 @@ LFLAGS = $(DEBUG) -Wall
 OBJ = $(OBJDIR)/res.o $(OBJDIR)/Window.o $(OBJDIR)/main.o
 CPP = InsertionSort.cpp QuickSort.cpp SelectionSort.cpp BubbleSort.cpp GnomeSort.cpp StoogleSort.cpp \
 RadixSort.cpp BitonicSort.cpp CockTailSort.cpp
+RadixSort.cpp BitonicSort.cpp MergeSort.cpp
 # ============================ RECEPIES ========================================
 
 $(OBJDIR)/Window.o: ./Window.cpp ./inc/Window.h

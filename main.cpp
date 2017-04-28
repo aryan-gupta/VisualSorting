@@ -39,6 +39,7 @@
 #include ".\BitonicSort.cpp"
 #include ".\CockTailSort.cpp"
 #include ".\ShellSort.cpp"
+#include ".\MergeSort.cpp"
 
 int MAX_ELEM = 1024;// 1024, 512, 341. 256, 204, 128, 
 
@@ -52,15 +53,20 @@ int main(int argc, char* argv[]) {
 	
 	int choice = Window::askSort();
 	
+	for(int i = 0; i < MAX_ELEM; ++i)
+		testVec.push_back(i);
+	
 	gWindow = new Window();
 	
 	// std::random_shuffle(testVec.begin(), testVec.end());
 	// printPretty(testVec);
+
+	// SortAlg::MergeSort(testVec.begin(), testVec.end());
 	
 	// SortAlg::ShellSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	// printPretty(testVec);
-	
+	// system("pause");
 	
 	switch(choice) {
 		case 0: MAX_ELEM = 128;
@@ -138,6 +144,11 @@ int main(int argc, char* argv[]) {
 				testVec.push_back(i);
 			std::random_shuffle(testVec.begin(), testVec.end());
 			SortAlgVis::ShellSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+		break;
+		
+		case 9:
+			std::random_shuffle(testVec.begin(), testVec.end());
+			SortAlgVis::MergeSort(testVec.begin(), testVec.end());
 		break;
 		
 		default:
