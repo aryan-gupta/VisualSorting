@@ -53,17 +53,16 @@ int main(int argc, char* argv[]) {
 	PRINT_LEGAL_TERR;
 	srand(time(0));
 	
-	for(int i = 0; i < 10; ++i)
-		testVec.push_back(i);
+	// for(int i = 0; i < 9; ++i)
+		// testVec.push_back(i);
 	
-	std::random_shuffle(testVec.begin(), testVec.end());
-	printPretty(testVec);
+	// std::random_shuffle(testVec.begin(), testVec.end());
+	// printPretty(testVec);
 
-	SortAlg::BogoSort(testVec.begin(), testVec.end());
+	// SortAlg::BogoSort(testVec.begin(), testVec.end());
 	
-	
-	printPretty(testVec);
-	system("pause");
+	// printPretty(testVec);
+	// system("pause");
 	
 	while(true) {
 		int choice = Window::askSort();
@@ -159,6 +158,13 @@ int main(int argc, char* argv[]) {
 					testVec.push_back(i);
 				std::random_shuffle(testVec.begin(), testVec.end());
 				SortAlgVis::MergeSort(testVec.begin(), testVec.end());
+			break;
+
+			case 13: MAX_ELEM = 6;
+				for(int i = 0; i < MAX_ELEM; ++i)
+					testVec.push_back(i);
+				std::random_shuffle(testVec.begin(), testVec.end());
+				SortAlgVis::BogoSort(testVec.begin(), testVec.end());
 			break;
 			
 			default:
