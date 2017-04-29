@@ -51,13 +51,13 @@ namespace SortAlg {
 }
 
 namespace SortAlgVis {	
-	template<typename ITER>
-	std::vector<typename ITER::value_type> MergeSortMerge(ITER lbegin, const ITER mid, const ITER end) {
+	template<typename ITER, typename FUNC>
+	std::vector<typename ITER::value_type> MergeSortMerge(ITER lbegin, const ITER mid, const ITER end, FUNC cmp) {
 		std::vector<typename ITER::value_type> v;
 		ITER rbegin = mid;
 		::gWindow->render({lbegin, rbegin, end});
 		while (lbegin != mid && rbegin != end) {
-			v.push_back((*lbegin <= *rbegin)? *lbegin++ : *rbegin++);
+			v.push_back(cmp(*lbegin, *rbegin)? *lbegin++ : *rbegin++);
 			::gWindow->render({lbegin, rbegin, end});
 		}
 		
@@ -67,18 +67,18 @@ namespace SortAlgVis {
 		return std::move(v);
 	}
 
-	template <typename ITER>
-	void MergeSort(ITER begin, ITER end) {
+	template <typename ITER, typename FUNC>
+	void MergeSort(ITER begin, ITER end, FUNC cmp) {
 		auto size = std::distance(begin, end);
 		if (size < 2)
 			return;
 
 		auto mid = std::next(begin, size / 2);
 		::gWindow->render({begin, end});
-		MergeSort(begin, mid);
-		MergeSort(mid, end);
+		MergeSort(begin, mid, cmp);
+		MergeSort(mid, end, cmp);
 
-		auto &&v = MergeSortMerge(begin, mid, end);
+		auto &&v = MergeSortMerge(begin, mid, end, cmp);
 		::gWindow->render({begin, end, mid});
 		std::move(v.begin(), v.end(), begin);
 		::gWindow->render({begin, end, mid});
