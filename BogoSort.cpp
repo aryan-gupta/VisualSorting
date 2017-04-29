@@ -15,3 +15,30 @@
  * =============================================================================
  */
 #include "info.h"
+
+namespace SortAlg {
+	template <typename ITER>
+	bool Sorted(ITER start, ITER end) {	
+		while(start++ != end) {
+			if(start < start - 1) return false;
+		}
+		return true;
+	}
+	
+	template <typename ITER>
+	void RandomShuffle(ITER start, ITER end) {
+		unsigned num = std::distance(start, end);
+		
+		while(num --> 0) // ((num--) > 0) `Goes To operator`
+			std::iter_swap(start + (rand()%num), end - (rand()%num));
+	}
+	
+	template <typename ITER>
+	void BogoSort(ITER start, ITER end) {
+		srand(time(0));
+		
+		while(!Sorted(start, end)) {
+			RandomShuffle(start, end);
+		}
+	}
+}
