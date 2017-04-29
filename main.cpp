@@ -150,7 +150,7 @@ int main(int argc, char* argv[]) {
 				for(int i = 0; i < MAX_ELEM; ++i)
 					testVec.push_back(i);
 				std::random_shuffle(testVec.begin(), testVec.end());
-				SortAlgVis::HeapSort(testVec.begin(), testVec.end());
+				SortAlgVis::HeapSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 			break;
 			
 			case 12: MAX_ELEM = 1024;

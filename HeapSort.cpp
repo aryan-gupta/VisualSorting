@@ -55,33 +55,33 @@ namespace SortAlg {
 }
 
 namespace SortAlgVis {
-	template<typename ITER>
-	void MaxHeapify (ITER begin, std::size_t& heap_size, std::size_t i) {
+	template<typename ITER, typename FUNC>
+	void MaxHeapify (ITER begin, std::size_t& heap_size, std::size_t i, FUNC cmp) {
 		std::size_t lchild  = 2*(i + 1) - 1;
 		std::size_t rchild  = 2*(i + 1);
 		std::size_t largest = i;
 
-		if (lchild < heap_size && *(begin + lchild) > *(begin + largest))
+		if (lchild < heap_size && !cmp(*(begin + lchild), *(begin + largest)))
 			largest = lchild;
 		::gWindow->render({begin + largest, begin + lchild, begin + rchild});
-		if (rchild < heap_size && *(begin + rchild) > *(begin + largest)) 
+		if (rchild < heap_size && !cmp(*(begin + rchild), *(begin + largest)))
 			largest = rchild;
 		::gWindow->render({begin + largest, begin + lchild, begin + rchild});
 		if (largest != i) {
 			std::iter_swap(begin + i, begin + largest);
 			::gWindow->render({begin + largest, begin + lchild, begin + rchild});
-			MaxHeapify (begin, heap_size, largest);
+			MaxHeapify (begin, heap_size, largest, cmp);
 		}
 	}
 	
-	template<typename ITER>
-	void HeapSort (ITER begin, ITER end) {
+	template<typename ITER, typename FUNC>
+	void HeapSort (ITER begin, ITER end, FUNC cmp) {
 		std::size_t heap_size = std::distance (begin, end);
 		
 		if (heap_size <= 1) return;
 		
 		for (std::size_t i = heap_size / 2 - 1;; i--) {
-			MaxHeapify (begin, heap_size, i);
+			MaxHeapify (begin, heap_size, i, cmp);
 			::gWindow->render();
 			if (i == 0) break;
 		}
@@ -90,7 +90,7 @@ namespace SortAlgVis {
 			std::iter_swap(begin, begin + i);
 			::gWindow->render();
 			heap_size -= 1;
-			MaxHeapify (begin, heap_size, 0);
+			MaxHeapify (begin, heap_size, 0, cmp);
 			::gWindow->render();
 		}
 	}
