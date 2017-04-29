@@ -22,22 +22,63 @@ namespace SortAlg {
 	template <typename ITER>
 	void IntroSortHelper(ITER start, ITER end, unsigned max) {
 		std::size_t size = std::distance(start, end);
-		
-		if(size <= 1)
+		if(size <= 1) {
 			return;
 		
-		if(max == 0) {
+		} else if(max == 0) {
 			SortAlg::HeapSort(start, end);
+			LOGL(max)
 		} else {
 			std::size_t half = size / 2;
-			IntroSortHelper(start, end - half);
-			IntroSortHelper(start + half, end);
+			IntroSortHelper(start, end - half, max - 1);
+			IntroSortHelper(start + half, end, max - 1);
 		}
 	}
 	
-	template <typename ITERC>
+	template <typename ITER>
+	void IntroSort(ITER start, ITER end) {
+		unsigned max = log(std::distance(start, end)) * 2;
+		LOGL(max)
+		IntroSortHelper(start, end, max);
+	}
+}
+
+namespace SortAlgVis {
+	template <typename ITER, typename FUNC>
+	ITER PartMedOf3(ITER start, ITER end, FUNC cmp) {
+		auto mid = std::next(start, std::distance(start, end) / 2);
+		
+		if(!cmp(*mid, *end))
+			std::iter_swap(mid, end);
+		if(!cmp(*start, *mid))
+			std::iter_swap(start, mid);
+		if(!cmp(*mid, *end))
+			std::iter_swap(mid, end);
+				
+		std::iter_swap(mid, end);
+		return part(start, end, cmp);
+	}
+	
+	template <typename ITER>
+	void IntroSortHelper(ITER start, ITER end, unsigned max) { 
+		while(std::distance(start, end) > 16) {
+			if(max == 0) {
+				SortAlgVis::HeapSort(start, end);
+				::gWindow->render();
+				return;
+			} else {
+				auto prt = PartMedOf3(start, end, [](int a, int b){ return a < b; });
+				IntroSortHelper(prt, end, --max);
+				end = prt;
+				::gWindow->render();
+			}
+		}
+	}
+	
+	template <typename ITER>
 	void IntroSort(ITER start, ITER end) {
 		unsigned max = log(std::distance(start, end)) * 2;
 		IntroSortHelper(start, end, max);
+		SortAlgVis::InsertionSort(start, end, [](int a, int b){ return a < b; });
 	}
 }

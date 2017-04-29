@@ -41,6 +41,7 @@
 #include ".\ShellSort.cpp"
 #include ".\HeapSort.cpp"
 #include ".\MergeSort.cpp"
+#include ".\IntroSort.cpp"
 
 int MAX_ELEM = 1024;// 1024, 512, 341. 256, 204, 128, 
 
@@ -52,14 +53,12 @@ int main(int argc, char* argv[]) {
 	PRINT_LEGAL_TERR;
 	srand(time(0));
 	
-	// for(int i = 0; i < 10; ++i)
+	// for(int i = 0; i < 35; ++i)
 		// testVec.push_back(i);
 	
 	// std::random_shuffle(testVec.begin(), testVec.end());
 	// printPretty(testVec);
 
-	// SortAlg::MergeSort(testVec.begin(), testVec.end());
-	
 	// SortAlg::HeapSort(testVec.begin(), testVec.end());
 	
 	// printPretty(testVec);
@@ -159,6 +158,13 @@ int main(int argc, char* argv[]) {
 					testVec.push_back(i);
 				std::random_shuffle(testVec.begin(), testVec.end());
 				SortAlgVis::MergeSort(testVec.begin(), testVec.end());
+			break;
+			
+			case 14: MAX_ELEM = 1024;
+				for(int i = 0; i < MAX_ELEM; ++i)
+					testVec.push_back(i);
+				std::random_shuffle(testVec.begin(), testVec.end());
+				SortAlgVis::IntroSort(testVec.begin(), testVec.end());
 			break;
 			
 			default:
