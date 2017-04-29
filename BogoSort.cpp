@@ -18,10 +18,9 @@
 
 namespace SortAlg {
 	template <typename ITER>
-	bool Sorted(ITER start, ITER end) {	
-		while(start++ != end) {
-			if(start < start - 1) return false;
-		}
+	bool Sorted(ITER start, ITER end) {
+		while(++start != end)
+			if(*start < *(start - 1)) return false;
 		return true;
 	}
 	
@@ -29,16 +28,17 @@ namespace SortAlg {
 	void RandomShuffle(ITER start, ITER end) {
 		unsigned num = std::distance(start, end);
 		
-		while(num --> 0) // ((num--) > 0) `Goes To operator`
-			std::iter_swap(start + (rand()%num), end - (rand()%num));
+		while(--num != 1) 
+			std::iter_swap(start + (rand()%num), end - 1);
 	}
 	
 	template <typename ITER>
 	void BogoSort(ITER start, ITER end) {
-		srand(time(0));
+		//srand(time(0));
 		
 		while(!Sorted(start, end)) {
 			RandomShuffle(start, end);
+			//printPretty(testVec);
 		}
 	}
 }
