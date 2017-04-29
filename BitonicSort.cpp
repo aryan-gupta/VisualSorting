@@ -22,7 +22,7 @@ namespace SortAlg {
 		int half = (end - start) / 2;
 		
 		for(; start < end - half; start++) {
-			if((*start > *(start + half)) == up)
+			if(cmp(*start, *(start + half)) == up)
 				std::iter_swap(start, start + half);
 		}
 	}
@@ -58,45 +58,45 @@ namespace SortAlg {
 }
 
 namespace SortAlgVis {	
-	template <typename ITER>
-	void BitonicSortCompare(bool up, ITER start, ITER end) {
+	template <typename ITER, typename FUNC>
+	void BitonicSortCompare(bool up, ITER start, ITER end, FUNC cmp) {
 		int half = (end - start) / 2;
 		
 		for(; start < end - half; start++) {
 			::gWindow->render({start});
-			if((*start > *(start + half)) == up) {
+			if(!cmp(*start, *(start + half)) == up) {
 				std::iter_swap(start, start + half);
 				::gWindow->render({start});
 			}
 		}
 	}
 	
-	template <typename ITER>
-	void BitonicSortMerge(bool up, ITER start, ITER end) {
+	template <typename ITER, typename FUNC>
+	void BitonicSortMerge(bool up, ITER start, ITER end, FUNC cmp) {
 		if(end - start <= 1)
 			return;
 		
-		BitonicSortCompare(up, start, end);
+		BitonicSortCompare(up, start, end, cmp);
 		
 		int half = (end - start) / 2;
-		BitonicSortMerge(up, start, end - half);
-		BitonicSortMerge(up, start + half, end);
+		BitonicSortMerge(up, start, end - half, cmp);
+		BitonicSortMerge(up, start + half, end, cmp);
 	}
 	
 	
-	template <typename ITER>
-	void BitonicSortHelper(bool up, ITER start, ITER end) {
+	template <typename ITER, typename FUNC>
+	void BitonicSortHelper(bool up, ITER start, ITER end, FUNC cmp) {
 		if(end - start <= 1)
 			return;
 		
 		int half = (end - start) / 2;
-		BitonicSortHelper(true, start, end - half);
-		BitonicSortHelper(false, start + half, end);
-		BitonicSortMerge(up, start, end);
+		BitonicSortHelper(true, start, end - half, cmp);
+		BitonicSortHelper(false, start + half, end, cmp);
+		BitonicSortMerge(up, start, end, cmp);
 	}
 	
-	template <typename ITER>
-	void BitonicSort(ITER start, ITER end) {
-		BitonicSortHelper(true, start, end);
+	template <typename ITER, typename FUNC>
+	void BitonicSort(ITER start, ITER end, FUNC cmp) {
+		BitonicSortHelper(true, start, end, cmp);
 	}
 }

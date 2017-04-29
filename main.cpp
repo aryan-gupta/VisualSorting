@@ -125,11 +125,11 @@ int main(int argc, char* argv[]) {
 				SortAlgVis::RadixSort_MSD(testVec.begin(), testVec.end());
 			break;
 
-			case 8: MAX_ELEM = 1024;
+			case 8: MAX_ELEM = 512;
 				for(int i = 0; i < MAX_ELEM; ++i)
 					testVec.push_back(i);
 				std::random_shuffle(testVec.begin(), testVec.end());
-				SortAlgVis::BitonicSort(testVec.begin(), testVec.end());
+				SortAlgVis::BitonicSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 			break;
 			
 			case 9: MAX_ELEM = 64;
