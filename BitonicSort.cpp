@@ -17,8 +17,8 @@
 #include "info.h"
 
 namespace SortAlg {	
-	template <typename ITER>
-	void BitonicSortCompare(bool up, ITER start, ITER end) {
+	template <typename ITER, typename FUNC>
+	void BitonicSortCompare(bool up, ITER start, ITER end, FUNC cmp) {
 		int half = (end - start) / 2;
 		
 		for(; start < end - half; start++) {
@@ -27,33 +27,33 @@ namespace SortAlg {
 		}
 	}
 	
-	template <typename ITER>
-	void BitonicSortMerge(bool up, ITER start, ITER end) {
+	template <typename ITER, typename FUNC>
+	void BitonicSortMerge(bool up, ITER start, ITER end, FUNC cmp) {
 		if(end - start <= 1)
 			return;
 		
 		BitonicSortCompare(up, start, end);
 		
 		int half = (end - start) / 2;
-		BitonicSortMerge(up, start, end - half);
-		BitonicSortMerge(up, start + half, end);
+		BitonicSortMerge(up, start, end - half, cmp);
+		BitonicSortMerge(up, start + half, end, cmp);
 	}
 	
 	
-	template <typename ITER>
-	void BitonicSortHelper(bool up, ITER start, ITER end) {
+	template <typename ITER, typename FUNC>
+	void BitonicSortHelper(bool up, ITER start, ITER end, FUNC cmp) {
 		if(end - start <= 1)
 			return;
 		
 		int half = (end - start) / 2;
-		BitonicSortHelper(true, start, end - half);
-		BitonicSortHelper(false, start + half, end);
-		BitonicSortMerge(up, start, end);
+		BitonicSortHelper(true, start, end - half, cmp);
+		BitonicSortHelper(false, start + half, end, cmp);
+		BitonicSortMerge(up, start, end, cmp);
 	}
 	
-	template <typename ITER>
-	void BitonicSort(ITER start, ITER end) {
-		BitonicSortHelper(true, start, end);
+	template <typename ITER, typename FUNC>
+	void BitonicSort(ITER start, ITER end, FUNC cmp) {
+		BitonicSortHelper(true, start, end, cmp);
 	}
 }
 
