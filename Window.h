@@ -30,7 +30,7 @@ public:
 	Window();
 	~Window();
 	
-	void render(const std::vector<std::vector<int>::iterator>& colors = {}, int delay = DELAY);
+	void render(std::vector<std::vector<int>::iterator>&& colors = {}, int delay = DELAY);
 	
 	static int askSort();
 	

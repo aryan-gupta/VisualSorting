@@ -56,7 +56,7 @@ Window::~Window() {
 	SDL_DestroyWindow(window);     // Destroy our main window
 }
 
-void Window::render(const std::vector<std::vector<int>::iterator>& colors, int delay) {
+void Window::render(std::vector<std::vector<int>::iterator>&& colors, int delay) {
 	SDL_Event event;
 	while(SDL_PollEvent(&event)) {
 		switch(event.type) {
