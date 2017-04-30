@@ -48,6 +48,7 @@ CPP = \
 	MergeSort.cpp      \
 	BogoSort.cpp 
 
+IntroSort.cpp
 # ============================ RECEPIES ========================================
 
 $(OBJDIR)/Window.o: ./Window.cpp ./Window.h
