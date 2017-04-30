@@ -59,27 +59,27 @@ namespace SortAlgVis {
 		return part(start, end, cmp);
 	}
 	
-	template <typename ITER>
-	void IntroSortHelper(ITER start, ITER end, unsigned max) { 		
+	template <typename ITER, typename FUNC>
+	void IntroSortHelper(ITER start, ITER end, unsigned max, FUNC cmp) { 		
 		if(std::distance(start, end) < 16)
 			return;
 		
 		if(max == 0) {
-			SortAlgVis::HeapSort(start, end, [](int a, int b){ return a < b; });
+			SortAlgVis::HeapSort(start, end, cmp);
 			::gWindow->render();
 			return;
 		}
 		
-		auto prt = PartMedOf3(start, end, [](int a, int b){ return a < b; });
-		IntroSortHelper(start, prt, max - 1);
-		IntroSortHelper(prt, end, max - 1);
+		auto prt = PartMedOf3(start, end, cmp);
+		IntroSortHelper(start, prt, max - 1, cmp);
+		IntroSortHelper(prt, end, max - 1, cmp);
 		::gWindow->render();
 	}
 	
-	template <typename ITER>
-	void IntroSort(ITER start, ITER end) {
+	template <typename ITER, typename FUNC>
+	void IntroSort(ITER start, ITER end, FUNC cmp) {
 		unsigned max = log(std::distance(start, end)) * 2;
-		IntroSortHelper(start, end - 1, max);
-		SortAlgVis::InsertionSort(start, end, [](int a, int b){ return a < b; });
+		IntroSortHelper(start, end - 1, max, cmp);
+		SortAlgVis::InsertionSort(start, end, cmp);
 	}
 }
