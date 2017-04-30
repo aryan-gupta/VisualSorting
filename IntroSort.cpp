@@ -65,7 +65,7 @@ namespace SortAlgVis {
 			return;
 		
 		if(max == 0) {
-			SortAlgVis::HeapSort(start, end);
+			SortAlgVis::HeapSort(start, end, [](int a, int b){ return a < b; });
 			::gWindow->render();
 			return;
 		}

@@ -46,9 +46,9 @@ CPP = \
 	CockTailSort.cpp   \
 	HeapSort.cpp       \
 	MergeSort.cpp      \
-	BogoSort.cpp 
+	BogoSort.cpp       \
+	IntroSort.cpp      \
 
-IntroSort.cpp
 # ============================ RECEPIES ========================================
 
 $(OBJDIR)/Window.o: ./Window.cpp ./Window.h
