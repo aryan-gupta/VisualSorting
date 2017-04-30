@@ -179,17 +179,18 @@ int main(int argc, char* argv[]) {
 				std::cout << "Sorry, That is a Wrong Choice" << std::endl;
 			break;
 		}
-		testVec.clear();
-		delete gWindow;
-	}
-	
-	SDL_Event event;
-	while(true) {
-		while(SDL_PollEvent(&event)) {
-			switch(event.type) {
-				case SDL_QUIT:
-					exit(0);
-				break;
+		
+		SDL_Event event;
+		bool quit = false;
+		while(!quit) {
+			while(SDL_PollEvent(&event)) {
+				switch(event.type) {
+					case SDL_QUIT:
+						testVec.clear();
+						delete gWindow;
+						quit = true;
+					break;
+				}
 			}
 		}
 	}
