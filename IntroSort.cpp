@@ -78,8 +78,8 @@ namespace SortAlgVis {
 	
 	template <typename ITER>
 	void IntroSort(ITER start, ITER end) {
-		unsigned max = log(std::distance(start, end));
-		IntroSortHelper(start, end, max);
+		unsigned max = log(std::distance(start, end)) * 2;
+		IntroSortHelper(start, end - 1, max);
 		SortAlgVis::InsertionSort(start, end, [](int a, int b){ return a < b; });
 	}
 }
