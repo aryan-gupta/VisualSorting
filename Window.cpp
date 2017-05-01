@@ -112,7 +112,7 @@ int Window::askSort() {
 	using std::endl; using std::cout;
 	cout << "Please Pick a Sort: " << endl
 		 << "0.  Insertion Sort" << endl
-		 << "1.  QuickSort Sort" << endl
+		 << "1.  Quick Sort Sort" << endl
 		 << "2.  Selection Sort" << endl
 		 << "3.  Bubble Sort" << endl
 		 << "4.  Gnome Sort" << endl
@@ -120,13 +120,15 @@ int Window::askSort() {
 		 << "6.  Radix LSD Sort" << endl
 		 << "7.  Radix MSD Sort <- Not Working" << endl
 		 << "8.  Bitonic Sort" << endl
-		 << "9.  CockTail Sort" << endl
+		 << "9.  Cock Tail Sort" << endl
 		 << "10. Shell Sort" << endl
 		 << "11. Heap Sort" << endl
 		 << "12. Merge Sort" << endl
 		 << "13. Bogo Sort" << endl
 		 << "14. Intro Sort" << endl
 		 << "15. Comb Sort" << endl
+		 << "16. Cycle Sort" << endl
+		 << "17. Odd Even Sort" << endl
 		 << endl;
 		 
 	int c;
