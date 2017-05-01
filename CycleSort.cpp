@@ -23,12 +23,12 @@ namespace SortAlg {
 		const std::size_t size = std::distance(start, end);
 		unsigned writes = 0;
 		
-		for(int i = 0; i < size - 2; ++i) {
-			ITER::value_type item = *(start + i);
+		for(int i = 0; i < size - 1; ++i) {
+			typename ITER::value_type item = *(start + i);
 			
 			std::size_t pos = i;
 			
-			for(int j = i + 1; j < size - 1; ++j) {
+			for(int j = i + 1; j < size; ++j) {
 				if(*(start + j) < item)
 					++pos;
 			}
@@ -44,7 +44,7 @@ namespace SortAlg {
 			
 			while(pos != i) {
 				pos = i;
-				for(int j = i + 1; j < size - 1; ++j) {
+				for(int j = i + 1; j < size; ++j) {
 					if(*(start + j) < item)
 						++pos;
 				}
