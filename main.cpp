@@ -43,6 +43,7 @@
 #include ".\MergeSort.cpp"
 #include ".\BogoSort.cpp"
 #include ".\IntroSort.cpp"
+#include ".\CombSort.cpp"
 
 int MAX_ELEM = 1024;// 1024, 512, 341. 256, 204, 128, 
 
@@ -60,7 +61,7 @@ int main(int argc, char* argv[]) {
 	// std::random_shuffle(testVec.begin(), testVec.end());
 	// printPretty(testVec);
 
-	// SortAlg::HeapSort(testVec.begin(), testVec.end());
+	// SortAlg::CombSort(testVec.begin(), testVec.end());
 	
 	// printPretty(testVec);
 	// system("pause");
@@ -173,6 +174,13 @@ int main(int argc, char* argv[]) {
 					testVec.push_back(i);
 				std::random_shuffle(testVec.begin(), testVec.end());
 				SortAlgVis::IntroSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+			break;
+			
+			case 15: MAX_ELEM = 512;
+				for(int i = 0; i < MAX_ELEM; ++i)
+					testVec.push_back(i);
+				std::random_shuffle(testVec.begin(), testVec.end());
+				SortAlgVis::CombSort(testVec.begin(), testVec.end());
 			break;
 			
 			default:
