@@ -17,29 +17,24 @@
 #include "info.h"
 
 namespace SortAlg {
-	template <typename ITER, typename FUNC>
-	void SelectionSort(ITER start, ITER end, FUNC cmp) {
-		std::size_t gap = std::distance(end, start);
-		shrink = 1.3;
-		bool sorted = false;
+	template <typename ITER>
+	void CombSort(ITER start, ITER end) {
+		std::size_t gap = std::distance(start, end);
+		bool swapped = true;
 		
-		while(!sorted) {
-			gap = gap / shrink;
+		while( gap != 1 || swapped == true) {
 			
-			if(gap > 1) {
-				sorted = false;
-			} else {
+			gap = (gap * 10) / 13;
+			if(gap < 1)
 				gap = 1;
-				sorted = true;
-			}
 			
-			std::size_t i = 0;
-			while(i + gap < std::distance(end, start)) {
+			swapped = false;
+			
+			for(std::size_t i = 0; i < std::distance(start, end) - gap; ++i) {
 				if(*(start + i) > *(start + i + gap)) {
 					std::iter_swap(start + i, start + i + gap);
-					sorted = false;
+					swapped = true;
 				}
-				++i;
 			}
 		}
 	}
