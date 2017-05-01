@@ -49,6 +49,7 @@ CPP = \
 	BogoSort.cpp       \
 	IntroSort.cpp      \
 	CombSort.cpp       \
+	CycleSort.cpp       \
 
 # ============================ RECEPIES ========================================
 

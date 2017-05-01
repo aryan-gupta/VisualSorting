@@ -44,6 +44,7 @@
 #include ".\BogoSort.cpp"
 #include ".\IntroSort.cpp"
 #include ".\CombSort.cpp"
+#include ".\CycleSort.cpp"
 
 int MAX_ELEM = 1024;// 1024, 512, 341. 256, 204, 128, 
 
@@ -55,16 +56,16 @@ int main(int argc, char* argv[]) {
 	PRINT_LEGAL_TERR;
 	srand(time(0));
 	
-	// for(int i = 0; i < 35; ++i)
-		// testVec.push_back(i);
+	for(int i = 0; i < 35; ++i)
+		testVec.push_back(i);
 	
-	// std::random_shuffle(testVec.begin(), testVec.end());
-	// printPretty(testVec);
+	std::random_shuffle(testVec.begin(), testVec.end());
+	printPretty(testVec);
 
-	// SortAlg::CombSort(testVec.begin(), testVec.end());
+	SortAlg::CycleSort(testVec.begin(), testVec.end());
 	
-	// printPretty(testVec);
-	// system("pause");
+	printPretty(testVec);
+	system("pause");
 	
 	while(true) {
 		int choice = Window::askSort();
@@ -181,6 +182,13 @@ int main(int argc, char* argv[]) {
 					testVec.push_back(i);
 				std::random_shuffle(testVec.begin(), testVec.end());
 				SortAlgVis::CombSort(testVec.begin(), testVec.end());
+			break;
+			
+			case 16: MAX_ELEM = 512;
+				for(int i = 0; i < MAX_ELEM; ++i)
+					testVec.push_back(i);
+				std::random_shuffle(testVec.begin(), testVec.end());
+				SortAlgVis::CycleSort(testVec.begin(), testVec.end());
 			break;
 			
 			default:
