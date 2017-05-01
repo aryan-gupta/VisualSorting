@@ -15,3 +15,46 @@
  * =============================================================================
  */
 #include "info.h"
+
+
+namespace SortAlg {
+	template <typename ITER>
+	void CycleSort(ITER start, ITER end) {
+		const std::size_t size = std::distance(start, end);
+		unsigned writes = 0;
+		
+		for(int i = 0; i < size - 2; ++i) {
+			ITER::value_type item = *(start + i);
+			
+			std::size_t pos = i;
+			
+			for(int j = i + 1; j < size - 1; ++j) {
+				if(*(start + j) < item)
+					++pos;
+			}
+			
+			if(pos == i)
+				continue;
+			
+			while(item == *(start + pos))
+				++pos;
+			
+			std::swap(*(start + pos), item);
+			++writes;
+			
+			while(pos != i) {
+				pos = i;
+				for(int j = i + 1; j < size - 1; ++j) {
+					if(*(start + j) < item)
+						++pos;
+				}
+				
+				while(item == *(start + pos))
+					++pos;
+			
+				std::swap(*(start + pos), item);
+				++writes;
+			}
+		}
+	}
+}
