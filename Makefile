@@ -48,6 +48,7 @@ CPP = \
 	MergeSort.cpp      \
 	BogoSort.cpp       \
 	IntroSort.cpp      \
+	CombSort.cpp       \
 
 # ============================ RECEPIES ========================================
 
