@@ -58,3 +58,55 @@ namespace SortAlg {
 		}
 	}
 }
+
+
+namespace SortAlgVis {
+	template <typename ITER>
+	void CycleSort(ITER start, ITER end) {
+		const std::size_t size = std::distance(start, end);
+		unsigned writes = 0;
+		
+		for(int i = 0; i < size - 1; ++i) {
+			::gWindow->render({start + i});
+			typename ITER::value_type item = *(start + i);
+			
+			std::size_t pos = i;
+			
+			for(int j = i + 1; j < size; ++j) {
+				::gWindow->render({start + i, start + j, start + pos});
+				if(*(start + j) < item)
+					++pos;
+			}
+			
+			if(pos == i)
+				continue;
+			
+			while(item == *(start + pos)) {
+				++pos;
+				::gWindow->render({start + i, start + pos});
+			}
+			
+			std::swap(*(start + pos), item);
+			::gWindow->render({start + i, start + pos});
+			++writes;
+			
+			while(pos != i) {
+				pos = i;
+				for(int j = i + 1; j < size; ++j) {
+					::gWindow->render({start + i, start + j, start + pos});
+					if(*(start + j) < item)
+						++pos;
+				}
+				
+				while(item == *(start + pos)) {
+					::gWindow->render({start + i, start + pos});
+					++pos;
+				}
+			
+				std::swap(*(start + pos), item);
+				::gWindow->render({start + i, start + pos});
+				++writes;
+			}
+		}
+	}
+}
