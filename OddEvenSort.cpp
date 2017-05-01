@@ -18,9 +18,11 @@
 
 namespace SortAlg {
 	template <typename ITER>
-	void SelectionSort(ITER start, ITER end) {
+	void OddEvenSort(ITER start, ITER end) {
 		bool sorted = false;
 		while(!sorted) {
+			sorted = true;
+			
 			for(std::size_t i = 0; i < std::distance(start, end) - 1; i += 2) {
 				if(*(start + i) > *(start + i + 1)) {
 					std::iter_swap(start + i, start + i + 1);
