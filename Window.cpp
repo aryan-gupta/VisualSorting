@@ -126,6 +126,7 @@ int Window::askSort() {
 		 << "12. Merge Sort" << endl
 		 << "13. Bogo Sort" << endl
 		 << "14. Intro Sort" << endl
+		 << "15. Comb Sort" << endl
 		 << endl;
 		 
 	int c;
