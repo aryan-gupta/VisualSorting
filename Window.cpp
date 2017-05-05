@@ -56,6 +56,7 @@ Window::~Window() {
 	SDL_DestroyWindow(window);     // Destroy our main window
 }
 
+
 void Window::render(std::vector<std::vector<int>::iterator>&& colors, int delay) {
 	SDL_Event event;
 	while(SDL_PollEvent(&event)) {
@@ -102,13 +103,60 @@ void Window::render(std::vector<std::vector<int>::iterator>&& colors, int delay)
 	SDL_Delay(delay);
 }
 
+
 void Window::clear() {
 	SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF); // Black
 	SDL_RenderClear(renderer);
 }
 
 
+void Window::renderMenu() {
+	renderOptions();
+	renderTitle();
+	renderButtons();
+	
+}
+
+int Window::checkSortClick(const int x, const int y) {
+
+}
+
+
+int checkAuxClick(const int x, const int y) {
+	return -1;
+}
+
 int Window::askSort() {
+	
+	bool finished = false;
+	SDL_Event event;
+	
+	while(!finished) { // RENDER LOOP
+		
+		renderMenu();
+		
+		while(SDL_PollEvent(&event)) { // EVENT LOOP
+			switch(event.type) { // EVENT HANDLE
+				case SDL_MOUSEBUTTONUP: {
+					int x, y;
+					SDL_GetMouseState(&x, &y);
+					
+					int sort;
+					if((sort = checkSortClick(x, y)) != -1)
+						return sort;
+					
+					switch(checkAuxClick(x, y)) {
+						case BUTTON_SETTING:
+						break;
+						
+						default: break;
+					}
+					
+				} break;
+			} // END EVENT HANDLE
+		} // END EVENT LOOP
+	} // END RENDER LOOP
+	
 	using std::endl; using std::cout;
 	cout << "Please Pick a Sort: " << endl
 		 << "0.  Insertion Sort" << endl
