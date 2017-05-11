@@ -35,22 +35,22 @@ CFLAGS = $(DEBUG) -Wall -std=c++17 -c
 LFLAGS = $(DEBUG) -Wall
 OBJ = $(OBJDIR)/res.o $(OBJDIR)/Window.o $(OBJDIR)/main.o
 CPP = \
-	InsertionSort.cpp  \
-	QuickSort.cpp      \
-	SelectionSort.cpp  \
-	BubbleSort.cpp     \
-	GnomeSort.cpp      \
-	StoogleSort.cpp    \
-	RadixSort.cpp      \
-	BitonicSort.cpp    \
-	CockTailSort.cpp   \
-	HeapSort.cpp       \
-	MergeSort.cpp      \
-	BogoSort.cpp       \
-	IntroSort.cpp      \
-	CombSort.cpp       \
-	CycleSort.cpp      \
-	OddEvenSort.cpp    \
+	InsertionSort.h  \
+	QuickSort.h      \
+	SelectionSort.h  \
+	BubbleSort.h     \
+	GnomeSort.h      \
+	StoogleSort.h    \
+	RadixSort.h      \
+	BitonicSort.h    \
+	CockTailSort.h   \
+	HeapSort.h       \
+	MergeSort.h      \
+	BogoSort.h       \
+	IntroSort.h      \
+	CombSort.h       \
+	CycleSort.h      \
+	OddEvenSort.h    \
 
 # ============================ RECEPIES ========================================
 
