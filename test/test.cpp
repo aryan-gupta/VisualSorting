@@ -16,8 +16,9 @@
  */
 
 #include <iostream>
+#include <algorithm>
 
-using namespace std; 
+template<class TYPE> void printPretty(std::vector<TYPE>& vec);
 
 namespace test {
 	template <typename ITER, typename FUNC>
@@ -33,7 +34,8 @@ namespace test {
 }
 
 int main() {
-		
+	using namespace std; 
+
 	for(int i = 0; i < 35; ++i)
 		testVec.push_back(i);
 	
@@ -45,4 +47,16 @@ int main() {
 	printPretty(testVec);
 	system("pause");
 	
+}
+
+
+template<class TYPE>
+void printPretty(std::vector<TYPE>& vec) {
+	using std::cout; using std::endl;
+	
+	cout << endl;
+	for(TYPE& t : vec) {
+		cout << t << " ";
+	}
+	cout << endl;
 }

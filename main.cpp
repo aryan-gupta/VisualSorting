@@ -210,14 +210,3 @@ int main(int argc, char* argv[]) {
 	
 	return 0;
 }
-
-template<class TYPE>
-void printPretty(std::vector<TYPE>& vec) {
-	using std::cout; using std::endl;
-	
-	cout << endl;
-	for(TYPE& t : vec) {
-		cout << t << " ";
-	}
-	cout << endl;
-}
