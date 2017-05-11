@@ -18,7 +18,7 @@
 
 #include <cmath>
 
-namespace SortAlg {
+namespace SortAlg { /// @todo Add compare functor
 	template <typename ITER>
 	void IntroSortHelper(ITER start, ITER end, unsigned max) {
 		std::size_t size = std::distance(start, end);

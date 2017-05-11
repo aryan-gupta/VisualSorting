@@ -93,7 +93,7 @@ namespace SortAlg {
 	
 	template <typename ITER>
 	void BitonicSort(ITER start, ITER end, bool up) {
-		BitonicSortHelper(up, start, end);
+		BitonicSortHelper(up, start, end); /// @todo remove this func and combine it with prev
 	}
 }
 
