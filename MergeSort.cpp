@@ -64,7 +64,7 @@ namespace SortAlgVis {
 		v.insert(v.end(), lbegin, mid);
 		v.insert(v.end(), rbegin, end);
 
-		return std::move(v);
+		return v;
 	}
 
 	template <typename ITER, typename FUNC>
@@ -78,7 +78,7 @@ namespace SortAlgVis {
 		MergeSort(begin, mid, cmp);
 		MergeSort(mid, end, cmp);
 
-		auto &&v = MergeSortMerge(begin, mid, end, cmp);
+		auto v = MergeSortMerge(begin, mid, end, cmp);
 		::gWindow->render({begin, end, mid});
 		std::move(v.begin(), v.end(), begin);
 		::gWindow->render({begin, end, mid});
