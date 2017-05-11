@@ -22,16 +22,10 @@
 template<class TYPE> void printPretty(std::vector<TYPE>& vec);
 
 namespace test {
-	template <typename ITER, typename FUNC>
-	void InsertionSort(ITER start, ITER end, FUNC cmp) {
-		for(ITER srt = start + 1; srt != end; srt++) { // go through the entire array
-			ITER pntr = srt; // pick the first element
-			while(pntr > start && cmp(*(pntr), *(pntr - 1))) { // Until the element is in the right place or we are at the beginning
-				std::iter_swap(pntr, pntr - 1); // keep moving the element back
-				pntr--; // after we swap we want to update the pointer
-			}
-		}
-	}
+	
+	// =================== NON COMPARE FUNC ====================================
+	
+
 }
 
 std::vector<int> testVec;
@@ -45,8 +39,8 @@ int main() {
 	std::random_shuffle(testVec.begin(), testVec.end());
 	printPretty(testVec);
 
-	test::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
-	// test::InsertionSort(testVec.begin(), testVec.end());
+	test::SomeSort(testVec.begin(), testVec.end());
+	// test::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 	
 	printPretty(testVec);
 	system("pause");
