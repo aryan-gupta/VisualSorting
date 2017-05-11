@@ -33,6 +33,25 @@ namespace SortAlg {
 			StoogleSort(start, end - prt + 1, cmp); // resort first 2/3
 		}
 	}
+	
+	// =================== NON COMPARE FUNC ====================================
+	
+	template <typename ITER>
+	void StoogleSort(ITER start, ITER end) {
+		end--; // decrement end because ALG sorts [start, end]
+		
+		if(*start > *end)
+			std::iter_swap(start, end); // swap if they are our of order
+		
+		if(end - start + 1 > 2) { // make sure there is somthing to sort
+			std::size_t prt = (end - start + 1)/3; // get 2/3 partition
+			
+			// we are adding 1 to the end because ALG sorts [start, end]
+			StoogleSort(start, end - prt + 1); // sort first 2/3
+			StoogleSort(start + prt, end + 1); // sort second 2/3
+			StoogleSort(start, end - prt + 1); // resort first 2/3
+		}
+	}
 }
 
 namespace SortAlgVis {

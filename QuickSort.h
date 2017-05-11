@@ -42,6 +42,34 @@ namespace SortAlg {
 			QuickSort(piv + 1, end + 1, cmp); // sort everything after our pivot
 		}
 	}
+	
+	// =================== NON COMPARE FUNC ====================================
+	
+	template <typename ITER>
+	ITER part(ITER start, ITER end) {
+		ITER prt = start; // our parted pointer so [start, prt) is less than the pivot
+		
+		for(ITER pntr = start; pntr < end; ++pntr) { // go through the array except the pivot point
+			if(*pntr < *end) {         // if our pointer is less than our pivot
+				std::iter_swap(prt, pntr); // swap so its its before our partition
+				prt++;                     // increment partition
+			}
+		}
+		
+		std::iter_swap(prt, end); // swap our pivot with the first val more than pivot
+		return prt; // return out pivot
+	}
+	
+	template <typename ITER>
+	void QuickSort(ITER start, ITER end) {
+		end--; // decrement because ALG sorts [start, end]
+		
+		if(start < end) { // make sure we have some values to sort
+			ITER piv = part(start, end); // partition at the last value (pivot)
+			QuickSort(start, piv);       // sort all before our pivot point
+			QuickSort(piv + 1, end + 1); // sort everything after our pivot
+		}
+	}
 }
 
 

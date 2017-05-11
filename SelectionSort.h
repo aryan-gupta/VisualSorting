@@ -23,6 +23,15 @@ namespace SortAlg {
 			std::iter_swap(start, std::min_element(start, end, cmp));
 		}
 	}
+	
+	// =================== NON COMPARE FUNC ====================================
+	
+	template <typename ITER>
+	void SelectionSort(ITER start, ITER end) {
+		for(; start < end; start++) {
+			std::iter_swap(start, std::min_element(start, end));
+		}
+	}
 }
 
 namespace SortAlgVis {

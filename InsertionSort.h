@@ -28,6 +28,19 @@ namespace SortAlg {
 				pntr--; // after we swap we want to update the pointer
 			}
 		}
+	}	
+	
+	// =================== NON COMPARE FUNC ====================================
+	
+	template <typename ITER>
+	void InsertionSort(ITER start, ITER end) {
+		for(ITER srt = start + 1; srt != end; srt++) { // go through the entire array
+			ITER pntr = srt; // pick the first element
+			while(pntr > start && *(pntr) < *(pntr - 1)) { // Until the element is in the right place or we are at the beginning
+				std::iter_swap(pntr, pntr - 1); // keep moving the element back
+				pntr--; // after we swap we want to update the pointer
+			}
+		}
 	}
 }
 
