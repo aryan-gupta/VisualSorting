@@ -16,7 +16,7 @@
 */
 #include "info.h"
 
-namespace SortAlg {
+namespace SortAlg { /// @todo add compare functor
 	template<typename ITER>
 	void MaxHeapify (ITER begin, std::size_t& heap_size, std::size_t i) {
 		std::size_t lchild  = 2*(i + 1) - 1; // the left child

@@ -16,13 +16,13 @@
  */
 #include "info.h"
 
-namespace SortAlg {
+namespace SortAlg { /// @todo Add cmp Func template
 	template <typename ITER>
 	void CombSort(ITER start, ITER end) {
 		std::size_t gap = std::distance(start, end);
 		bool swapped = true;
 		
-		while( gap != 1 || swapped == true) {
+		while( gap != 1 || swapped == true) { /// @todo remove == true
 			
 			gap = (gap * 10) / 13;
 			if(gap < 1)

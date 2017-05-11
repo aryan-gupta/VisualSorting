@@ -29,6 +29,21 @@ namespace SortAlg {
 			}
 		}
 	}
+	
+	// =================== NON COMPARE FUNC ====================================
+	
+	template <typename ITER>
+	void GnomeSort(ITER start, ITER end) {
+		ITER idx = start;
+		while(idx < end) {
+			if(idx == start || *(idx) > *(idx - 1)) {
+				idx++;
+			} else {
+				std::iter_swap(idx, idx - 1);
+				idx--;
+			}
+		}
+	}
 }
 
 namespace SortAlgVis {

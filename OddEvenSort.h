@@ -16,7 +16,7 @@
  */
 #include "info.h"
 
-namespace SortAlg {
+namespace SortAlg { /// @todo Add compare func
 	template <typename ITER>
 	void OddEvenSort(ITER start, ITER end) {
 		bool sorted = false;

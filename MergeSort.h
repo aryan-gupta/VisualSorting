@@ -16,7 +16,7 @@
  */
 #include "info.h"
 
-namespace SortAlg {	
+namespace SortAlg {	/// @todo Add compare func
 	template<typename ITER>
 	std::vector<typename ITER::value_type> MergeSortMerge(ITER lbegin, const ITER mid, const ITER end) {
 		std::vector<typename ITER::value_type> v; // create tmp storage

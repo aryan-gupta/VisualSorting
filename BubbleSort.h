@@ -30,6 +30,22 @@ namespace SortAlg {
 			}
 		} while(!sorted); // repeat until the list is sorted
 	}
+	
+	// =================== NON COMPARE FUNC ====================================
+	
+	template <typename ITER>
+	void BubbleSort(ITER start, ITER end) {
+		bool sorted; // is the list sorted
+		do {
+			sorted = true; // assume that array is sorted
+			for(ITER idx = start; idx < end - 1; ++idx) { // go through the array except last
+				if(*(idx) > *(idx + 1)) {    // if the value and the next value is out of order
+					std::iter_swap(idx, idx + 1); // swap them 
+					sorted = false; // and set sorted to false;
+				}
+			}
+		} while(!sorted); // repeat until the list is sorted
+	}
 }
 
 namespace SortAlgVis {
