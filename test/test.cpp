@@ -17,6 +17,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <vector>
 
 template<class TYPE> void printPretty(std::vector<TYPE>& vec);
 
@@ -33,6 +34,8 @@ namespace test {
 	}
 }
 
+std::vector<int> testVec;
+
 int main() {
 	using namespace std; 
 
@@ -42,7 +45,8 @@ int main() {
 	std::random_shuffle(testVec.begin(), testVec.end());
 	printPretty(testVec);
 
-	test::OddEvenSort(testVec.begin(), testVec.end());
+	test::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
+	// test::InsertionSort(testVec.begin(), testVec.end());
 	
 	printPretty(testVec);
 	system("pause");
