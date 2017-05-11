@@ -20,5 +20,16 @@
 using namespace std; 
 
 int main() {
+		
+	for(int i = 0; i < 35; ++i)
+		testVec.push_back(i);
+	
+	std::random_shuffle(testVec.begin(), testVec.end());
+	printPretty(testVec);
+
+	SortAlg::OddEvenSort(testVec.begin(), testVec.end());
+	
+	printPretty(testVec);
+	system("pause");
 	
 }
