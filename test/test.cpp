@@ -19,6 +19,19 @@
 
 using namespace std; 
 
+namespace test {
+	template <typename ITER, typename FUNC>
+	void InsertionSort(ITER start, ITER end, FUNC cmp) {
+		for(ITER srt = start + 1; srt != end; srt++) { // go through the entire array
+			ITER pntr = srt; // pick the first element
+			while(pntr > start && cmp(*(pntr), *(pntr - 1))) { // Until the element is in the right place or we are at the beginning
+				std::iter_swap(pntr, pntr - 1); // keep moving the element back
+				pntr--; // after we swap we want to update the pointer
+			}
+		}
+	}
+}
+
 int main() {
 		
 	for(int i = 0; i < 35; ++i)
@@ -27,7 +40,7 @@ int main() {
 	std::random_shuffle(testVec.begin(), testVec.end());
 	printPretty(testVec);
 
-	SortAlg::OddEvenSort(testVec.begin(), testVec.end());
+	test::OddEvenSort(testVec.begin(), testVec.end());
 	
 	printPretty(testVec);
 	system("pause");
