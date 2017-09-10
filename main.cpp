@@ -190,6 +190,8 @@ int main(int argc, char* argv[]) {
 			
 			default:
 				std::cout << "Sorry, That is a Wrong Choice" << std::endl;
+				delete gWindow;
+				continue;
 			break;
 		}
 		
