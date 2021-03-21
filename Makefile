@@ -1,74 +1,104 @@
-
-# Copyright (c) 2017 The Gupta Empire - All Rights Reserved
-# Unauthorized copying of this file, via any medium is strictly prohibited
-# Proprietary and confidential
 #
-# Written by Aryan Gupta <me@theguptaempire.net>
-# 
-# ==============================================================================
-# @author 			Aryan Gupta
-# @project 			
-# @file 			Makefile
-# @date				 (YYYY-MM-DD)
-# @version			1.0.0
-# @brief 			
-# ==============================================================================
+#    Copyright (c) 2018 The Gupta Empire - All Rights Reserved
+#    Please refer to LICENCE.md in the project root directory for
+#    licence information. If no Licence file is provided, please
+#    contact Aryan Gupta <me@theguptaempire.net> for more info
+#
+#===============================================================================
+#    @author          Aryan Gupta <me@theguptaempire.net>
+#    @title           Makefile
+#    @brief           This is a generic Makefile I use for my C++ projects
+#===============================================================================
 .DEFAULT_GOAL := all
-# ==========================  CONST MACROS  ====================================
-CC = "C:/Compiler/MinGW-w64/mingw32/bin/g++.exe"
-7Z = "C:/Program Files (Portable)/7-Zip/7z.exe"
-RES = "C:/Compiler/MinGW-w64/mingw32/bin/windres.exe"
-OBJDIR = ./obj
-BINDIR = ./bin
-DATDIR = ./dat
+#==========================  CONFIG MACROS  ====================================
+CC = g++
+GDB = gdb
+EXT = out
+PRGM = main
 
-DEBUG = -g -DDEBUG=true
+# Directories
+BIN = bin
+SRC = src
+DEP = dep
 
-# ============================  SDL LIBS  ======================================
-GRAPHICS = -w -Wl,-subsystem,windows
+# Boost libs
+# BOOST_INC = -I/usr/local/boost/include
+# BOOST_LNK = -L/usr/local/boost/lib -lboost_atomic -lboost_graph -lboost_math_tr1l -lboost_stacktrace_noop -lboost_chrono -lboost_iostreams -lboost_prg_exec_monitor -lboost_system -lboost_container -lboost_locale -lboost_program_options -lboost_test_exec_monitor -lboost_context -lboost_log -lboost_random -lboost_thread -lboost_contract -lboost_log_setup -lboost_regex -lboost_timer -lboost_coroutine -lboost_math_c99 -lboost_serialization -lboost_type_erasure -lboost_date_time -lboost_math_c99f -lboost_signals -lboost_unit_test_framework -lboost_exception -lboost_math_c99l -lboost_stacktrace_addr2line -lboost_wave -lboost_fiber -lboost_math_tr1 -lboost_stacktrace_backtrace -lboost_wserialization -lboost_filesystem -lboost_math_tr1f -lboost_stacktrace_basic
+
+# SDL libs
 # Standard SDL libs
-L_SDLC = -IC:/Compiler/SDL/include/SDL2 
-L_SDLL = -LC:/Compiler/SDL/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer  -lSDL2_ttf  -lSDL2_image
+SDL_INC = -I/usr/include/SDL2/ 
+SDL_LNK = -lSDL2main -lSDL2 # -lSDL2_mixer  -lSDL2_ttf  -lSDL2_image
 
-# ==============================  MACROS  ======================================
-CFLAGS = $(DEBUG) -Wall -std=c++17 -c
-LFLAGS = $(DEBUG) -Wall
-OBJ = $(OBJDIR)/res.o $(OBJDIR)/Window.o $(OBJDIR)/main.o
-CPP = InsertionSort.cpp QuickSort.cpp SelectionSort.cpp BubbleSort.cpp GnomeSort.cpp StoogleSort.cpp \
-RadixSort.cpp BitonicSort.cpp CockTailSort.cpp
-# ============================ RECEPIES ========================================
+#==============================  MACROS  ======================================
 
-$(OBJDIR)/Window.o: ./Window.cpp ./inc/Window.h
-	$(CC) ./Window.cpp -o ./$@ $(CFLAGS) $(L_SDLC)
+# Final executable
+EXE = $(BIN)/$(PRGM).$(EXT)
 
-$(OBJDIR)/main.o: ./main.cpp ./inc/main.h $(CPP)
-	$(CC) ./main.cpp -o ./$@ $(CFLAGS) $(L_SDLC)
+# Source files and dependencies
+SRCS = $(wildcard $(SRC)/*.cpp)
+OBJS = $(patsubst %, $(BIN)/%.o, $(basename $(notdir $(SRCS))))
+DEPS = $(patsubst %, $(DEP)/%.d, $(basename $(notdir $(SRCS))))
 
-$(OBJDIR)/%.o: ./%.cpp
-	$(CC) ./$^ -o ./$@ $(CFLAGS) 
+# External libs
+ILIBS = $(BOOST_INC) $(SDL_INC)
+LLIBS = $(BOOST_LNK) $(SDL_LNK)
 
-$(OBJDIR)/res.o: ./res.rc ./info.h
-	$(RES) ./res.rc  ./$@
-	
-# Link	
-$(BINDIR)/main.exe: $(OBJ)
-	$(CC) ./$^ -o ./$@ $(LFLAGS) $(L_SDLL)
+# Compile/Link flags
+CFLAGS = $(DEBUG) $(ILIBS) -Wall -std=c++17 -c
+LFLAGS = $(DEBUG) $(LLIBS) -Wall -lstdc++fs
 
-# ============================= PHONY RECEPIES =================================
+# Dependency flags
+DEPFLAGS = -MT $@ -MD -MP -MF $(patsubst %,$(DEP)/%.Td, $(basename $(notdir $<)))
+
+#============================= PHONY RECEPIES =================================
+
+# Build for debugging
+.PHONY: debug
+debug: DEBUG = -O0 -ggdb -g3
+debug: $(EXE)
+
+# Build for production
+.PHONY: build
+build: DEBUG = -O3 -DNDEBUG -s
+build: $(EXE)
+
+# Run program
+.PHONY: run
+run:
+	@$(EXE)
+
+# Debug program
+.PHONY: run
+run:
+	@$(EXE)
+
+# Clean and recompile for production
 .PHONY: all
-all: clean $(OBJ)
-	$(CC) $(OBJ) $(LFLAGS) $(LSDLL) $(LSDLIL) $(LSDLTL) -o $(BINDIR)/final.exe
+all: clean build
 
-.PHONY: link
-link:
-	$(CC) ./$^ $(LFLAGS) $(LSDLL) $(LSDLIL) $(LSDLTL) -o $(BINDIR)/main.exe	
-	
+# Clean directories
 .PHONY: clean
 clean:
-	del $(OBJDIR)/*.o
-	del $(BINDIR)/*.exe
-	del $(DATDIR)/*.dat
+	-rm -f $(BIN)/*
+	-rm -f $(DEP)/*
 
-.PHONY: archive
-archive:
-	$(7Z) a -tzip ./arc/"%DATE:~-4%%DATE:~4,2%%DATE:~7,2%".zip * -xr!obj -xr!bin -xr!arc
+#============================ RECEPIES ========================================
+
+# Object files
+$(BIN)/%.o: $(SRC)/%.cpp
+	@echo Building $@
+	@$(CC) $(DEPFLAGS) $< $(CFLAGS) -o $@
+	@mv -f $(DEP)/$*.Td $(DEP)/$*.d
+
+# Link
+$(EXE): $(OBJS)
+	@echo Linking $@
+	@$(CC) $^ -o $@ $(LFLAGS)
+
+# Dependencies
+.PRECIOUS = $(DEP)/%.d
+$(DEP)/%.d: ;
+
+# Include Dependencies
+-include $(DEPS)

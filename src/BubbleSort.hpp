@@ -16,24 +16,16 @@
  */
 #include "info.h"
 
-#include ".\inc\main.h"
+#include "main.h"
+#include "Window.h"
 
 namespace SortAlg {
 	template <typename ITER, typename FUNC>
-	void CockTailSort(ITER start, ITER end, FUNC cmp) {
+	void BubbleSort(ITER start, ITER end, FUNC cmp) {
 		bool sorted; // is the list sorted
 		do {
 			sorted = true; // assume that array is sorted
-			for(ITER idx = start; idx < end - 2; ++idx) { // go through the array except last
-				if(!cmp(*(idx), *(idx + 1))) {    // if the value and the next value is out of order
-					std::iter_swap(idx, idx + 1); // swap them 
-					sorted = false; // and set sorted to false;
-				}
-			}
-			if(sorted)
-				break;
-			sorted = true; // assume that array is sorted
-			for(ITER idx = end - 2; idx >= start; --idx) { // go through the array except last
+			for(ITER idx = start; idx < end - 1; ++idx) { // go through the array except last
 				if(!cmp(*(idx), *(idx + 1))) {    // if the value and the next value is out of order
 					std::iter_swap(idx, idx + 1); // swap them 
 					sorted = false; // and set sorted to false;
@@ -43,33 +35,20 @@ namespace SortAlg {
 	}
 }
 
-
 namespace SortAlgVis {
 	template <typename ITER, typename FUNC>
-	void CockTailSort(ITER start, ITER end, FUNC cmp) {
+	void BubbleSort(ITER start, ITER end, FUNC cmp) {
 		bool sorted; // is the list sorted
 		do {
 			sorted = true; // assume that array is sorted
-			for(ITER idx = start; idx < end - 2; ++idx) { // go through the array except last
+			for(ITER idx = start; idx < end - 1; ++idx) { // go through the array except last
 				::gWindow->render({idx, idx + 1});
 				if(!cmp(*(idx), *(idx + 1))) {    // if the value and the next value is out of order
+					//::gWindow->render({idx, idx + 1});
 					std::iter_swap(idx, idx + 1); // swap them 
 					::gWindow->render({idx, idx + 1});
 					sorted = false; // and set sorted to false;
 				}
-				::gWindow->render({idx, idx + 1});
-			}
-			if(sorted)
-				break;
-			sorted = true; // assume that array is sorted
-			for(ITER idx = end - 2; idx >= start; --idx) { // go through the array except last
-				::gWindow->render({idx, idx + 1});
-				if(!cmp(*(idx), *(idx + 1))) {    // if the value and the next value is out of order
-					std::iter_swap(idx, idx + 1); // swap them 
-					::gWindow->render({idx, idx + 1});
-					sorted = false; // and set sorted to false;
-				}
-				::gWindow->render({idx, idx + 1});
 			}
 		} while(!sorted); // repeat until the list is sorted
 	}

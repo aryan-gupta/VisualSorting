@@ -16,7 +16,8 @@
  */
 #include "info.h"
 
-#include ".\inc\main.h"
+#include "main.h"
+#include "Window.h"
 
 namespace SortAlg {	
 	template <typename ITER>

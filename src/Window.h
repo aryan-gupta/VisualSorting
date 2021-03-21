@@ -18,6 +18,8 @@
 #ifndef WINDOW_H_INC
 #define WINDOW_H_INC
 
+#include <vector>
+
 #include <SDL.h>
 
 extern const int SCRN_H;

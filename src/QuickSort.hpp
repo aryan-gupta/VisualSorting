@@ -16,6 +16,9 @@
  */
 #include "info.h"
 
+#include "main.h"
+#include "Window.h"
+
 namespace SortAlg {
 	template <typename ITER, typename FUNC>
 	ITER part(ITER start, ITER end, FUNC cmp) {

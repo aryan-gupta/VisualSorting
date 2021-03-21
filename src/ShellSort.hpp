@@ -18,6 +18,8 @@
 
 #include <array>
 
+#include "Window.h"
+
 namespace SortAlg {
 	template <typename ITER, typename FUNC>
 	void ShellSort(ITER start, ITER end, FUNC cmp) {

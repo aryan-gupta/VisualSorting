@@ -18,6 +18,9 @@
 
 #include <algorithm>
 
+#include "main.h"
+#include "Window.h"
+
 namespace SortAlg {
 	template <typename ITER, typename FUNC>
 	void InsertionSort(ITER start, ITER end, FUNC cmp) {

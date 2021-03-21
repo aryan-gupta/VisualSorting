@@ -18,6 +18,8 @@
 #ifndef MAIN_H_INC
 #define MAIN_H_INC
 
+#include <vector>
+
 class Window;
 
 extern int MAX_ELEM;

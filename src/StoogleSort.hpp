@@ -15,6 +15,7 @@
  * =============================================================================
  */
 #include "info.h"
+#include "Window.h"
 
 namespace SortAlg {
 	template <typename ITER, typename FUNC>

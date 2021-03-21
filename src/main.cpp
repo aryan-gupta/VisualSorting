@@ -26,19 +26,19 @@
 #include <vector>
 #include <algorithm>
 
-#include ".\inc\main.h"
-#include ".\inc\Window.h"
+#include "main.h"
+#include "Window.h"
 
-#include ".\InsertionSort.cpp"
-#include ".\QuickSort.cpp"
-#include ".\SelectionSort.cpp"
-#include ".\BubbleSort.cpp"
-#include ".\GnomeSort.cpp"
-#include ".\StoogleSort.cpp"
-#include ".\RadixSort.cpp"
-#include ".\BitonicSort.cpp"
-#include ".\CockTailSort.cpp"
-#include ".\ShellSort.cpp"
+#include "InsertionSort.hpp"
+#include "QuickSort.hpp"
+#include "SelectionSort.hpp"
+#include "BubbleSort.hpp"
+#include "GnomeSort.hpp"
+#include "StoogleSort.hpp"
+#include "RadixSort.hpp"
+#include "BitonicSort.hpp"
+#include "CockTailSort.hpp"
+#include "ShellSort.hpp"
 
 int MAX_ELEM = 1024;// 1024, 512, 341. 256, 204, 128, 
 
