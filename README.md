@@ -1,6 +1,6 @@
-VisualSorting
+# VisualSorting
 
-2021 Update:
+### March 2021 Update:
  - Update readme
  - Update directory structure and header link locations
  - Replace Makefile with Linux version

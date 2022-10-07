@@ -70,7 +70,7 @@ int main(int argc, char* argv[]) {
 			SortAlgVis::InsertionSort(testVec.begin(), testVec.end(), [](int a, int b){ return a < b; });
 		break;
 		
-		case 1: MAX_ELEM = 1024;
+		case 1: MAX_ELEM = 1900;
 			for(int i = 0; i < MAX_ELEM; ++i)
 				testVec.push_back(i);
 			std::random_shuffle(testVec.begin(), testVec.end());
